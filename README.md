@@ -1,3 +1,24 @@
+Basic ReactJS format in order to convert html codes to reactjs format<br />
+`src/pages/*` is where all the html codes will be placed.<br />
+HTML and reactjs are not fully compatible, so it will take some time to fix the error. <br />
+OR<br />
+You can try to use online library such as `React Bootstrap` which is already in `package-lock.json` as a dependency.<br />
+Detailed documentation for react bootstrap is the following website:<br />
+https://react-bootstrap.github.io/getting-started/introduction/<br />
+OR<br />
+You can look for other online libraries like react bootstrap.<br />
+<br />
+Each pages js files can be tested at `src/App.js` file. <br />
+Just comment other pages out and input in the following format:<br />
+`import <JS file name> from '<JS file location>';`<br />
+` <JS file namel/>` <br /><br />
+Follow the example of `HomeCarousel` in `src/App.js` and `src/pages/HomeCarousel.js`
+<br />
+For carousel, I used `React Slick` which its documentation link is the following:<br />
+https://react-slick.neostack.com/docs/get-started/<br />
+
+## README.MD
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
