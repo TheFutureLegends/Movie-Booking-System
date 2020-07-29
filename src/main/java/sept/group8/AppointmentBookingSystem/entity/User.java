@@ -6,9 +6,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "user")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    //Properties
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "user_name")
@@ -22,66 +21,33 @@ public class User {
     @Column(name="role")
     private String role;
 
-//    @OneToOne(mappedBy = "user")
-//    private UserProfile userProfile;
-
-// Constructor
-    public User() {
-    }
+    //Constructors
+    public User() { }
 
     public User(String userName, @Size(min = 5, max = 20) String password, String role, UserProfile userProfile) {
         this.userName = userName;
         this.password = password;
         this.role = role;
-//        this.userProfile = userProfile;
     }
 
-    // Getters
-
+    //Getters
     public int getId() {
         return id;
     }
-
     public String getUserName() {
         return userName;
     }
+    public String getPassword() { return password; }
+    public String getRole() { return role; }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public String getRole() {
-        return role;
-    }
+    //Setters
+    public void setId(int id) { this.id = id; }
+    public void setUserName(String userName) { this.userName = userName; }
+    public void setPassword(String password) { this.password = password; }
+    public void setRole(String role) { this.role = role; }
 
-//    public UserProfile getUserProfile() {
-//        return userProfile;
-//    }
-
-// Setters
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-//    public void setUserProfile(UserProfile userProfile) {
-//        this.userProfile = userProfile;
-//    }
-
-    // toString
-
+    //toString
     @Override
     public String toString() {
         return "User{" +
@@ -89,7 +55,6 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-//                ", userProfile=" + userProfile +
                 '}';
     }
 }
