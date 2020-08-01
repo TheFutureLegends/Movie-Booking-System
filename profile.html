@@ -197,7 +197,7 @@
             <div class="container">
                 <div class="row">               
                         
-                    <div class="profile-image col-md-4 col-sm-5">    
+                    <div class="profile-image img-circle">    
                             <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="Profile" style="width: 350px;">
                             <br>
                             
@@ -207,14 +207,19 @@
                     <div class="profile col-md-8 col-sm-8">    
                             <h1 class="profile">janedoe_</h1>
                             
-                            <div><input class="button" type="button" value="Edit profile"></div>
+                            <div>
+                                <button class="dropdown button button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"> Edit profile</a></li>
+                                        <li><a href="#"> Change password</a></li>
+                                      </ul>
+                            </div>
                             <p>
                                 <span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>        
-                    </div>
-                    
-                </div>
-                <!-- End of profile section -->
-    
+                    </div>                   
+                </div>                
+                <!-- End of profile section -->   
             </div>
             <!-- End of container -->
         </section>

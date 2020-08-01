@@ -74,9 +74,10 @@ h1 {text-decoration: solid, red ;}
   color: white;
   font-weight: bold;
 }
-.footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+.dropdown-menu3{
+  text-align: center;
+
+}
+.img{
+  border-radius: 50%;
 }
