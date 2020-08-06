@@ -42,11 +42,11 @@ public class Reservation {
     public String getName() {
         return name;
     }
-    public UserProfile getUserProfile() { return userProfile; }
     public Date getDateTime() { return dateTime; }
     public String getStatus() {
         return status;
     }
+    public UserProfile getUserProfile() { return userProfile; }
 
     //Setters
     public void setId(int id) {
@@ -55,14 +55,14 @@ public class Reservation {
     public void setName(String name) {
         this.name = name;
     }
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
     public void setStatus(String status) {
         this.status = status;
+    }
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 
     //toString

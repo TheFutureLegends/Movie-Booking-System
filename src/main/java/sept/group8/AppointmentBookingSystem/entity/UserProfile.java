@@ -1,7 +1,5 @@
 package sept.group8.AppointmentBookingSystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
