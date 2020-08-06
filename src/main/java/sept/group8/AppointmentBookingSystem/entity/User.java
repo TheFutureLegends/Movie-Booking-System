@@ -1,7 +1,6 @@
 package sept.group8.AppointmentBookingSystem.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -13,8 +12,6 @@ public class User {
     @Column(name = "user_name")
     private String userName;
 
-    @Transient
-    @Size(min=5, max=20)
     @Column(name = "password")
     private String password;
 
@@ -24,7 +21,7 @@ public class User {
     //Constructors
     public User() { }
 
-    public User(String userName, @Size(min = 5, max = 20) String password, String role, UserProfile userProfile) {
+    public User(String userName, String password, String role, UserProfile userProfile) {
         this.userName = userName;
         this.password = password;
         this.role = role;

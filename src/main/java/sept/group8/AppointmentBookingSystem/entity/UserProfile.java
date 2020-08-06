@@ -1,6 +1,10 @@
 package sept.group8.AppointmentBookingSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user_profile")
@@ -13,6 +17,9 @@ public class UserProfile {
     @Column private String phone;
     @Column private String email;
     @Column private String address;
+
+    @OneToMany(mappedBy = "userProfile" ,cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 
     //Constructor
     public UserProfile() { }
@@ -40,6 +47,7 @@ public class UserProfile {
     public String getAddress() {
         return address;
     }
+    public List<Reservation> getReservations() { return reservations; }
 
     //Setters
     public void setId(int id) {
@@ -54,9 +62,8 @@ public class UserProfile {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setAddress(String address) { this.address = address; }
+    public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
 
     //toString
     @Override
@@ -68,5 +75,15 @@ public class UserProfile {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    //add reservations
+
+    public void addReservation(Reservation reservation){
+        if (reservations == null){
+            reservations = new ArrayList<>();
+        }
+        reservations.add(reservation);
+        reservation.setUserProfile(this);
     }
 }
