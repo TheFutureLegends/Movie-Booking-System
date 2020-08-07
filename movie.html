@@ -229,7 +229,7 @@
                             </tr>
                             <tr>
                                 <div class="card-body">
-                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                    <button type="button" class="btn btn-outline-primary alerta" onclick = "myFunction()" toggle="modal"
                                         data-target="#movie11320">13:20
                                         PM<br>84/100</button>
                                     <button type="button" class="btn btn-outline-primary"
@@ -640,7 +640,10 @@
         <script>
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
-            });            
+            });
+            function myFunction() {
+            alert("You need to be a member to book your reservation!");
+            };           
         </script>
         
     </body>
