@@ -1,4 +1,4 @@
-# Movie-Booking-System
+# PRE-RELEASE (Milestone 1)
 This is the first version of the project. Features built into this version are:
 
 1. List of movies
