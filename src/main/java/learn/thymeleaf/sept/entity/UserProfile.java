@@ -16,7 +16,7 @@ public class UserProfile {
     @Column private String email;
     @Column private String address;
 
-    @OneToMany(mappedBy = "userProfile" ,cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userProfile", fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
     //Constructor

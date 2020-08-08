@@ -34,7 +34,7 @@ public class Reservation {
     @Column
     private String status;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "u_profile_id")
     private UserProfile userProfile;
     //Constructors
