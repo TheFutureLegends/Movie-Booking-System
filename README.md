@@ -1,5 +1,5 @@
 # PRE-RELEASE (Milestone 1)
-This is the first version of the project. The majority of the most important features are already built into this version:
+This is the first version of the project. Most of the important features are already built into this version:
 
 1. List of movies
 2. Movie details
