@@ -1,2 +1,2 @@
 # SECONDARY MAIN BRANCH
-This branch diverge from the MASTER branch and act as the main branch for development.
+This branch diverges from the MASTER branch and act as the main branch for development.
