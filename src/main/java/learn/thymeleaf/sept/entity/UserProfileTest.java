@@ -1,4 +1,4 @@
-package sept.group8.AppointmentBookingSystem.entity;
+package learn.thymeleaf.sept.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package sept.group8.AppointmentBookingSystem.entity;
+package learn.thymeleaf.sept.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

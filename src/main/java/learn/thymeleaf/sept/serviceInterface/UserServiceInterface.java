@@ -1,6 +1,6 @@
-package sept.group8.AppointmentBookingSystem.serviceInterface;
+package learn.thymeleaf.sept.serviceInterface;
 
-import sept.group8.AppointmentBookingSystem.entity.User;
+import learn.thymeleaf.sept.entity.User;
 
 import java.util.List;
 
