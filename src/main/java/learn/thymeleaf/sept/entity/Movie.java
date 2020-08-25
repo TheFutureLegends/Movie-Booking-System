@@ -27,11 +27,16 @@ public class Movie {
     @Column private String language;
     @Column private String rated;
     @Column private String description;
+    @Column(name = "movie_start_time")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date movieStartTime;
+    @Column(name = "movie_available_seat") private int movieAvailableSeat;
 
     //Constructors
     public Movie() { }
 
-    public Movie(String coverPicture, String movieName, String directors, String cast, String category, Date premiere, int duration, String language, String rated, String description) {
+    public Movie(String coverPicture, String movieName, String directors, String cast, String category, Date premiere, int duration, String language, String rated, String description, Date movieStartTime, int movieAvailableSeat) {
         this.coverPicture = coverPicture;
         this.movieName = movieName;
         this.directors = directors;
@@ -42,6 +47,8 @@ public class Movie {
         this.language = language;
         this.rated = rated;
         this.description = description;
+        this.movieStartTime = movieStartTime;
+        this.movieAvailableSeat = movieAvailableSeat;
     }
 
     //Getters
@@ -56,6 +63,10 @@ public class Movie {
     public String getLanguage() { return language; }
     public String getRated() { return rated; }
     public String getDescription() { return description; }
+
+    public Date getMovieStartTime() { return movieStartTime; }
+
+    public int getMovieAvailableSeat() { return movieAvailableSeat; }
 
     //Setters
     public void setId(int id) { this.id = id; }
@@ -75,6 +86,10 @@ public class Movie {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setMovieStartTime(Date movieStartTime) { this.movieStartTime = movieStartTime; }
+
+    public void setMovieAvailableSeat(int movieAvailableSeat) { this.movieAvailableSeat = movieAvailableSeat; }
 
     //toString
     @Override

@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/style.css}">
     <title>Movie</title>
 </head>
 
@@ -214,116 +214,33 @@
 
         <!-- Table container -->
         <div class="container">
-            
-            <!-- Dates -->           
-            <table class="table">               
-                <tr>
-                    <td> <a href="#" class="btn datescolor"> 9 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 10 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 11 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 12 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 13 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 14 </a> </td>
-                    <td> <a href="#" class="btn datescolor"> 15 </a> </td>
-                </tr>
-            </table>
-
-            <!-- Movie time -->
+            <!-- List of Movie -->
             <table class="table">
-
-                <!-- Movie 1 -->
-                <tr>
+                <tr th:each="tempMovie : ${movies}">
                     <td>
-                        <button type="button" data-toggle="modal" data-target="#movie1">
-                            <div class="card" style="width:200px">
-                                <img class="card-img-top"
-                                     src="https://www.cgv.vn/media/catalog/product/cache/3/image/c5f0a1eff4c394a251036189ccddaacd/z/_/z_main-poster_bcvh.jpg"
-                                     alt="Card image">
+                        <button type="button" data-toggle="modal" th:data-target="${tempMovie.id}">
+                            <div class="card">
+                                <img class="card-img-top" src="https://www.cgv.vn/media/catalog/product/cache/3/image/c5f0a1eff4c394a251036189ccddaacd/z/_/z_main-poster_bcvh.jpg" alt="Card image" style="width:300px" />
                             </div>
                         </button>
                     </td>
                     <td>
                         <table class="table">
-                            <tr>
-                                <h4>INVISIBILITY EVIDENCE</h4>
+                            <tr >
+                                <h4 th:text="${tempMovie.movieName}"></h4>
                             </tr>
                             <tr>
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-outline-primary alerta" onclick="myFunction()"
-                                            toggle="modal"
-                                            data-target="#movie11320">13:20
-                                        PM<br>84/100
-                                    </button>
-                                    <button type="button" class="btn btn-outline-primary"
-                                            disabled>15:25PM<br>0/100
-                                    </button>
-                                    <button type="button" class="btn btn-outline-primary"
-                                            disabled>17:30PM<br>0/100
-                                    </button>
-                                </div>
-                            </tr>
-                        </table>
-                    </td>
-
-                    <td>
-                        <button type="button" data-toggle="modal" data-target="#movie2">
-                            <div class="card" style="width:200px">
-                                <img class="card-img-top"
-                                     src="https://www.cgv.vn/media/catalog/product/cache/3/image/c5f0a1eff4c394a251036189ccddaacd/r/s/rsz_phim-scoob-2020_2.jpg"
-                                     alt="Card image">
-                            </div>
-                        </button>
-                    </td>
-                    <td>
-                        <table class="table">
-                            <tr>
-                                <h4>SCOOBY-DOO'S ADVENTURE</h4>
-                            </tr>
-                            <tr>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-outline-primary">13:00 PM<br>30/100</a>
-                                    <a href="#" class="btn btn-outline-primary">14:10 PM<br>10/100</a>
-                                    <button type="button" class="btn btn-outline-primary" disabled>19:10
-                                        PM<br>0/100
-                                    </button>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" th:data-target="${tempMovie.id}">
+                                    <p th:text="${tempMovie.movieStartTime}"></p><br>
+                                    <p th:text="${tempMovie.movieAvailableSeat}"></p>
+                                </button>
                             </tr>
                         </table>
                     </td>
                 </tr>
-
-
-                <tr>
-                    <td>
-                        <button type="button" data-toggle="modal" data-target="#movie3">
-                            <div class="card" style="width:200px">
-                                <img class="card-img-top"
-                                    src="https://www.cgv.vn/media/catalog/product/cache/3/image/c5f0a1eff4c394a251036189ccddaacd/r/s/rsz_pee_nak2_main_poster_2.jpg"
-                                    alt="Card image">
-                            </div>
-                        </button>
-                    </td>
-                    <td>
-                        <table class="table">
-                            <tr>
-                                <h4>THE FROZEN FAMILY 2</h4>
-                            </tr>
-                            <tr>
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-outline-primary"
-                                        disabled>13:10PM<br>0/100</button>
-                                    <a href="#" class="btn btn-outline-primary">15:30 PM<br>84/100</a>
-                                    <a href="#" class="btn btn-outline-primary">17:00 PM<br>18/100</a>
-                                </div>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
             </table>
-            <!-- Movie time ends -->
+
         </div>
-        <!-- Table container ends -->
 
         <!-- Table Modals for movie 1 -->
         <div class="modal fade" id="movie1">

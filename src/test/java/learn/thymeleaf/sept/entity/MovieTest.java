@@ -13,7 +13,7 @@ class MovieTest {
 	
 	@Autowired
 	Movie m1 = new Movie();
-	Movie m2 = new Movie("picture", "movieName", "directors", "cast", "category", new Date(System.currentTimeMillis()), 120, "language", "rated", "description");
+	Movie m2 = new Movie("picture", "movieName", "directors", "cast", "category", new Date(System.currentTimeMillis()), 120, "language", "rated", "description", new Date(System.currentTimeMillis()), 69 );
 
 	@Test
 	void testConstructors() {
