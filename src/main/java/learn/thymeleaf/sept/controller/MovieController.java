@@ -18,9 +18,13 @@ public class MovieController {
     }
 
     @RequestMapping("/movie")
-    public String menu(Model model){
+    public String menu(Model model, String keyword){
         List<Movie> movies = movieService.findAll();
-        Model theModel = model.addAttribute("movies", movies);
+        if (keyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        } else {
+            Model theModel = model.addAttribute("movies", movies);
+        }
         return "movie";
     }
 

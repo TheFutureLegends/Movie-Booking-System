@@ -10,4 +10,5 @@ public interface MovieServiceInterface {
     public Movie findById(int id);
     public void create(Movie movie);
     public void deleteById(int id);
+    public List<Movie> findByMovieName(String keyword);
 }

@@ -51,4 +51,9 @@ public class MovieService implements MovieServiceInterface {
     public void deleteById(int id) {
         movieRepository.deleteById(id);
     }
+
+    @Override
+    public List<Movie> findByMovieName(String keyword) {
+        return movieRepository.findByMovieName(keyword);
+    }
 }
