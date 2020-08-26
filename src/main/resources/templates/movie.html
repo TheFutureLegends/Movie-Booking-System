@@ -232,13 +232,13 @@
                             <tr>
                                 <div th:switch="${tempMovie.movieAvailableSeat}">
                                     <div th:case="0">
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" th:data-target="${tempMovie.id}" disabled>
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myFunction" disabled onclick = "myFunction()" >
                                             Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
                                             Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
                                         </button>
                                     </div>
                                     <div th:case="*">
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" th:data-target="${tempMovie.id}">
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myFunction">
                                             <p th:text="${tempMovie.movieStartTime}"></p><br>
                                             <p th:text="${tempMovie.movieAvailableSeat}"></p>
                                         </button>
