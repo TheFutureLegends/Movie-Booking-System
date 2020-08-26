@@ -29,7 +29,7 @@ public class Movie {
     @Column private String description;
     @Column(name = "movie_start_time")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "HH:mm")
     private Date movieStartTime;
     @Column(name = "movie_available_seat") private int movieAvailableSeat;
 

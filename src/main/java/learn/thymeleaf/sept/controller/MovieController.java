@@ -25,7 +25,9 @@ public class MovieController {
     }
 
     @RequestMapping("/movie/login")
-    public String login(){
+    public String login(Model model){
+        List<Movie> movies = movieService.findAll();
+        Model theModel = model.addAttribute("movies", movies);
         return "movie-log-in";
     }
 }

@@ -17,8 +17,8 @@
     <div class="container" style="margin-top:30px">
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" href="homepage-log-in.html">
-                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
+            <a class="navbar-brand" th:href="@{/home/login}">
+                <img th:src="@{/logo}" alt="logo"
                      style="width:60px;">
             </a>
             <!-- Movie -->
@@ -212,7 +212,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <table class="table">
-                            <tr>
+                            <tr th:each="tempMovie : ${movies}">
                                 <td>
                                     <div class="card" style="width:300px;">
                                         <img class="card-img-top"
@@ -223,46 +223,47 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <h4>INVISIBILITY EVIDENCE</h4>
+                                            <h4 th:text="${tempMovie.movieName}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Directors</b></td>
-                                            <td>Trinh Dinh Le Minh</td>
+                                            <td th:text="${tempMovie.directors}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Cast</b></td>
-                                            <td>Phuong Anh Dao, Quang Tuan, Ai Phuong, Otis, Anh Tu ...</td>
+                                            <td th:text="${tempMovie.cast}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Category</b></td>
-                                            <td>Suspense, Psychology</td>
+                                            <td th:text="${tempMovie.category}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Premiere</b></td>
-                                            <td>07/10/2020</td>
+                                            <td th:text="${tempMovie.premiere}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Time</b></td>
-                                            <td>100 minutes</td>
+                                            <td th:text="${tempMovie.duration}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Language</b></td>
-                                            <td>Vietnamese - English subtitles</td>
+                                            <td th:text="${tempMovie.language}"/>
                                         </tr>
                                         <tr>
                                             <td><b>Rated</b></td>
-                                            <td>C18 - THE FILM PROHIBITS VIEWERS UNDER THE AGE OF 18</td>
+                                            <td th:text="${tempMovie.rated}"/>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Description</b></td>
+                                            <td th:text="${tempMovie.description}"/>
+
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
                         </table>
-                        <p>After being injured in a car accident, Thu - a blind girl came to the police to report the
-                            incident that she believed had become a murder. However, she encountered many difficulties
-                            to convince the police to believe that she was blind. At the same time, Hai - another
-                            witness suddenly appeared with testimony contradicting Thu on the scene of the case. While
-                            the police were having a headache verifying whose information was true, the murderer
-                            silently monitored both Thu and Hai to try and kill the witness.</p>
+<!--                        <p th:text="${tempMovie.description}"></p>-->
+
                     </div>
 
                     <!-- Modal footer -->
