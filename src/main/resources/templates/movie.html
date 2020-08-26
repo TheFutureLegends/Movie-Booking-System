@@ -219,9 +219,7 @@
             <table class="table" th:each="tempMovie : ${movies}">
                 <tr>
                     <td style="width:600px">
-<!--                        <div class="card">-->
-                            <img class="card-img-top" th:src="${tempMovie.coverPicture}" alt="Card image" style="width:300px" />
-<!--                        </div>-->
+                        <img class="card-img-top" th:src="${tempMovie.coverPicture}" alt="Card image" style="width:300px" />
                         <br>
                         <b>Description</b>
                         <div th:text="${tempMovie.description}"/>
