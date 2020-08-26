@@ -115,13 +115,13 @@
                             <tr>
                                 <div th:switch="${tempMovie.movieAvailableSeat}">
                                     <div th:case="0">
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" th:data-target="${tempMovie.id}" disabled>
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalConfirmation" disabled>
                                             Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
                                             Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
                                         </button>
                                     </div>
                                     <div th:case="*">
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" th:data-target="${tempMovie.id}">
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalConfirmation">
                                             Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
                                             Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
                                         </button>
@@ -170,8 +170,7 @@
     </div>
 
     <!-- Number of customers confrimation modals start-->
-    <!-- Movie 1 at 13:20PM -->
-    <div class="modal fade" id="movie11320">
+    <div class="modal fade" id="modalConfirmation">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -184,14 +183,6 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <table class="table">
-                            <tr>
-                                <td><b>Movie Name</b></td>
-                                <td>INVISIBILITY EVIDENCE</td>
-                            </tr>
-                            <tr>
-                                <td><b>Selected Time</b></td>
-                                <td>August 9th 13:20PM</td>
-                            </tr>
                             <tr>
                                 <td><b>Nubmer of Customer</b></td>
                                 <td>
@@ -211,179 +202,6 @@
                 </div>
             </div>
         </div>
-         <!-- Movie 1 at 13:20PM ends -->
-
-         <!-- Movie 2 at 13:00PM -->
-    <div class="modal fade" id="movie21300">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h3 class="modal-title">Movie Confirmation</h3>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="table">
-                            <tr>
-                                <td><b>Movie Name</b></td>
-                                <td>SCOOBY-DOO'S ADVENTURE</td>
-                            </tr>
-                            <tr>
-                                <td><b>Selected Time</b></td>
-                                <td>August 9th 13:00PM</td>
-                            </tr>
-                            <tr>
-                                <td><b>Nubmer of Customer</b></td>
-                                <td>
-                                    <form class="form-inline">
-                                        <input class="form-control" type="number" min="1" max="10" value="1">
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><b>Pay Now</b></button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <!-- Movie 2 at 13:00PM ends -->
-
-        <!-- Movie 2 at 14:10PM -->
-        <div class="modal fade" id="movie21410">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h3 class="modal-title">Movie Confirmation</h3>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="table">
-                            <tr>
-                                <td><b>Movie Name</b></td>
-                                <td>SCOOBY-DOO'S ADVENTURE</td>
-                            </tr>
-                            <tr>
-                                <td><b>Selected Time</b></td>
-                                <td>August 9th 14:10PM</td>
-                            </tr>
-                            <tr>
-                                <td><b>Nubmer of Customer</b></td>
-                                <td>
-                                    <form class="form-inline">
-                                        <input class="form-control" type="number" min="1" max="10" value="1">
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><b>Pay Now</b></button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Movie 2 at 14:10PM ends -->
-
-        <!-- Movie 3 at 15:30PM -->
-                <div class="modal fade" id="movie31530">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h3 class="modal-title">Movie Confirmation</h3>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="table">
-                            <tr>
-                                <td><b>Movie Name</b></td>
-                                <td>THE FROZEN FAMILY 2</td>
-                            </tr>
-                            <tr>
-                                <td><b>Selected Time</b></td>
-                                <td>August 9th 15:30PM</td>
-                            </tr>
-                            <tr>
-                                <td><b>Nubmer of Customer</b></td>
-                                <td>
-                                    <form class="form-inline">
-                                        <input class="form-control" type="number" min="1" max="10" value="1">
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><b>Pay Now</b></button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Movie 3 at 15:30PM ends -->
-
-        <!-- Movie 3 at 17:00PM -->
-                        <div class="modal fade" id="movie31700">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h3 class="modal-title">Movie Confirmation</h3>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <table class="table">
-                            <tr>
-                                <td><b>Movie Name</b></td>
-                                <td>THE FROZEN FAMILY 2</td>
-                            </tr>
-                            <tr>
-                                <td><b>Selected Time</b></td>
-                                <td>August 9th 17:00PM</td>
-                            </tr>
-                            <tr>
-                                <td><b>Nubmer of Customer</b></td>
-                                <td>
-                                    <form class="form-inline">
-                                        <input class="form-control" type="number" min="1" max="10" value="1">
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><b>Pay Now</b></button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Movie 3 at 17:00PM ends -->
         <!-- Number of customers confrimation modals ends -->
 
     <!-- Footer -->
