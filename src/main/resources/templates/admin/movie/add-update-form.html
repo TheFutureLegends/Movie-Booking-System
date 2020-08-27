@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/style.css}">
+    <title>Movie List</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h3>Movie List</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Movie</p>
+
+    <form action="#" th:action="@{/movie/save}"
+          th:object="${movie}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <input type="text" th:field="*{coverPicture}"
+               class="form-control mbz-4 col-4" placeholder="Cover picture link">
+
+        <input type="text" th:field="*{movieName}"
+               class="form-control mb-4 col-4" placeholder="Movie name">
+
+        <input type="text" th:field="*{directors}"
+               class="form-control mb-4 col-4" placeholder="Directors">
+
+        <input type="text" th:field="*{cast}"
+               class="form-control mb-4 col-4" placeholder="Cast">
+
+        <input type="text" th:field="*{category}"
+               class="form-control mb-4 col-4" placeholder="Category">
+
+        <input type="date" th:field="*{premiere}"
+               class="form-control mb-4 col-4" placeholder="Premiere">
+
+        <input type="number" th:field="*{duration}"
+               class="form-control mb-4 col-4" placeholder="Duration">
+
+        <input type="text" th:field="*{language}"
+               class="form-control mb-4 col-4" placeholder="Language">
+
+        <input type="number" th:field="*{rated}"
+               class="form-control mb-4 col-4" placeholder="Rated">
+
+        <input type="text" th:field="*{description}"
+               class="form-control mb-4 col-4" placeholder="Description">
+
+        <input type="date" th:field="*{movieStartTime}"
+               class="form-control mb-4 col-4" placeholder="Movie start time">
+
+        <input type="number" th:field="*{movieAvailableSeat}"
+               class="form-control mb-4 col-4" placeholder="Movie available seat">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/admin/movie/list}">Back to Movie List</a>
+
+</div>
+
+</body>
+</html>

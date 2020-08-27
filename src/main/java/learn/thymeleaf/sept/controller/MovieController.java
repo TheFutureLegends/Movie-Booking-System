@@ -4,7 +4,7 @@ import learn.thymeleaf.sept.entity.Movie;
 import learn.thymeleaf.sept.service.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +34,5 @@ public class MovieController {
         Model theModel = model.addAttribute("movies", movies);
         return "movie-log-in";
     }
+
 }
