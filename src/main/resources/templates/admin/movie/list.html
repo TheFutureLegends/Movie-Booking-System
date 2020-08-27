@@ -13,6 +13,16 @@
 </head>
 
 <body>
+    <h3>Movie List</h3>
+    <hr>
+    <br>
+    <!-- Search form -->
+    <form th:action="@{/admin/movie/list}" method = "get">
+        <label for="txtSearch">
+            <input id="txtSearch" type="text" name="keyword">
+        </label>
+        <button type="submit">Find employee</button>
+    </form>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">

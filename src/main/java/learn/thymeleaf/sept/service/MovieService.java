@@ -1,7 +1,6 @@
 package learn.thymeleaf.sept.service;
 
 import learn.thymeleaf.sept.entity.Movie;
-import learn.thymeleaf.sept.entity.User;
 import learn.thymeleaf.sept.repositories.MovieRepository;
 import learn.thymeleaf.sept.serviceInterface.MovieServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class MovieService implements MovieServiceInterface {
             movie = result.get();
         }
         else {
-            // we didn't find the employee
+            // we didn't find the movie
             throw new RuntimeException("Did not find movie id - " + id);
         }
 
