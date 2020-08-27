@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Reservation List</title>
+</head>
+
+<body>
+
+<div class="container">
+    <h3>Reservation List</h3>
+    <hr>
+    <br>
+
+    <!-- Search form -->
+    <form th:action="@{/admin/reservation/list}" method = "get">
+        <label for="txtSearch">
+            <input id="txtSearch" type="text" name="keyword">
+        </label>
+        <button type="submit">Find reservation</button>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Reservation</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="tempReservation : ${reservations}">
+            <td th:text="${tempReservation.name}"></td>
+            <td th:text="${tempReservation.dateTime}"></td>
+            <td th:text="${tempReservation.status}"></td>
+
+            <!-- update functions -->
+            <td>
+                <a th:href = "@{/admin/reservation/showFormForUpdate(reservationId = ${tempReservation.id})}"
+                   class = "btn btn-warning">
+                    Update
+                </a>
+                <a class="btn btn-danger"
+                   onclick="if (!(confirm('Are you sure want to delete this reservation ???'))) return false"
+                   th:href="@{/admin/reservation/delete(reservationId = ${tempReservation.id})}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- Add a button -->
+    <a th:href="@{/admin/reservation/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Reservation
+    </a>
+</div>
+
+</body>
+</html>

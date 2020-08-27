@@ -1,7 +1,6 @@
 package learn.thymeleaf.sept.service;
 
 import learn.thymeleaf.sept.entity.Movie;
-import learn.thymeleaf.sept.entity.User;
 import learn.thymeleaf.sept.repositories.MovieRepository;
 import learn.thymeleaf.sept.serviceInterface.MovieServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;

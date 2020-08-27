@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/style.css}">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <title>Movie List</title>
 </head>
 <body>
@@ -41,8 +41,8 @@
         <input type="text" th:field="*{category}"
                class="form-control mb-4 col-4" placeholder="Category">
 
-        <input type="datetime-local" th:field="*{premiere}"
-               class="form-control mb-4 col-4" placeholder="Premiere">
+        <input type="text" th:field="*{premiere}"
+               class="form-control mb-4 col-4" placeholder="yyyy-MM-dd HH:mm">
 
         <input type="number" th:field="*{duration}"
                class="form-control mb-4 col-4" placeholder="Duration">
@@ -56,8 +56,8 @@
         <input type="text" th:field="*{description}"
                class="form-control mb-4 col-4" placeholder="Description">
 
-        <input type="datetime-local" th:field="*{movieStartTime}"
-               class="form-control mb-4 col-4" placeholder="Movie start time">
+        <input type="text" th:field="*{movieStartTime}"
+               class="form-control mb-4 col-4" placeholder="yyyy-MM-dd HH:mm">
 
         <input type="number" th:field="*{movieAvailableSeat}"
                class="form-control mb-4 col-4" placeholder="Movie available seat">
