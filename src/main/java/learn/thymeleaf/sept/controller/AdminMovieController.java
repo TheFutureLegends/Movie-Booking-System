@@ -9,40 +9,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping ("/admin/movie")
+@RequestMapping("/admin/movie")
 public class AdminMovieController {
+
     private final MovieService movieService;
 
-    public AdminMovieController(MovieService theMovieService) {
-        movieService = theMovieService;
+    public AdminMovieController(MovieService movieService) {
+        this.movieService = movieService;
     }
 
-    // add mapping for "/list"
-
-    @GetMapping("/listMovies")
+    @GetMapping("/list")
     public String listMovies(Model theModel, String keyword) {
 
-        // get movies from db
-        List<Movie> theMovies = movieService.findAll();
+        // get employees from db
+        List<Movie> movies = movieService.findAll();
         // check if there is a search keyword
         if(keyword != null){
-            theModel.addAttribute("movies",MovieService.findByMovieName(keyword));
+            theModel.addAttribute("movies", movieService.findByMovieName(keyword));
         }
         else {
             // add to the spring model
-            theModel.addAttribute("movies", theMovies);
+            theModel.addAttribute("movies", movies);
         }
-
-        return "admin/movie/list";
-    }
-
-    @GetMapping("/showFormForAdd")
-    public String showFormForAdd(Model theModel) {
-
-        // create model attribute to bind form data
-        Movie theMovie = new Movie();
-
-        theModel.addAttribute("movie", theMovie);
 
         return "admin/movie/list";
     }
@@ -54,17 +42,7 @@ public class AdminMovieController {
         //set the employee as a model attribute to pre-populate the form
         theModel.addAttribute("movie", movie);
         // send over to our form
-        return "admin/movie/create-update-form";
-    }
-
-    @PostMapping("/save")
-    public String saveMovie(@ModelAttribute("movie") Movie theMovie) {
-
-        // save the employee
-        movieService.create(theMovie);
-
-        // use a redirect to prevent duplicate submissions
-        return "redirect:admin/movie/listMovies";
+        return "admin/movie/add-update-form";
     }
 
     @GetMapping("/delete")
@@ -72,6 +50,27 @@ public class AdminMovieController {
         //get the employee
         movieService.deleteById(theId);
         //redirect to list
-        return "redirect:admin/movie/listMovies";
+        return "redirect:/admin/movie/list";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
+
+        // create model attribute to bind form data
+        Movie movie = new Movie();
+
+        theModel.addAttribute("movie", movie);
+
+        return "admin/movie/add-update-form";
+    }
+
+    @PostMapping("/save")
+    public String saveMovie(@ModelAttribute("movie") Movie movie) {
+
+        // save the employee
+        movieService.create(movie);
+
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/admin/movie/list";
     }
 }
