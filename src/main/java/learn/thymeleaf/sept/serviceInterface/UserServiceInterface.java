@@ -9,4 +9,5 @@ public interface UserServiceInterface {
     public User findById(int id);
     public void create(User user);
     public void deleteById(int id);
+    public List<User> findByUserName(String keyword);
 }

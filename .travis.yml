@@ -1,0 +1,16 @@
+language: java
+jdk:
+  - openjdk14
+
+os:
+  - linux
+  - osx
+
+jobs:
+  include:
+    - stage: Test
+      script: ./mvnw clean test
+notifications:
+  email:
+    - s3634831@rmit.edu.vn
+    - s3759797@rmit.edu.vn
