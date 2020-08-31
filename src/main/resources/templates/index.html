@@ -33,36 +33,6 @@
             </li>
         </ul>
 
-        <!-- Dropdown -->
-        <ul class="nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                   data-toggle="dropdown">
-                    Membership
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" data-toggle="tooltip" data-placement="right"
-                       title="Already have an account? Sign in now!!!" href="#">
-                        <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                                data-target="#Login">Log - in
-                        </button>
-                    </a>
-                    <a class="dropdown-item" data-toggle="tooltip" data-placement="right"
-                       title="Create a new account" href="#">
-                        <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                                data-target="#Register">Register
-                        </button>
-                    </a>
-
-                </div>
-            </li>
-        </ul>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" style="color: white;" href="#">Cultureplex</a>
-            </li>
-        </ul>
-
         <div class="md-form form-sm my-0">
             <form class="form-inline my-1">
                 <label>
@@ -72,34 +42,21 @@
             </form>
         </div>
 
-        <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                data-target="#Ticket">Tickets
-        </button>
+        <ul class="nav">
+            <li class="nav-item">
+                <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
+                        data-target="#Login">Log - in
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
+                        data-target="#Register">Register
+                </button>
+            </li>
+        </ul>
+        <!-- Navbar ends-->
 
-        <!-- The Modal -->
-        <div class="modal fade" id="Ticket">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Membership Require</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        You have to be a member of CINEMA in order to use this function
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        <!-- Navbar modal starts -->
         <div class="modal fade" id="Login">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -214,6 +171,7 @@
                 </div>
             </div>
         </div>
+        <!-- Navbar modal ends-->
     </nav>
     <!-- Nav Ends -->
     <br>
