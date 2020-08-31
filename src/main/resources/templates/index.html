@@ -100,6 +100,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Register Modal starts -->
         <div class="modal fade" id="Register">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -112,53 +114,21 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="form-inline my-1">
+                        <form class="form-inline my-1" action="#" th:action="@{/admin/user/save}" th:object="${user}" method="POST">
+                            <div>Username: </div>
                             <label>
                                 <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
                                        placeholder="User-name" required>
                             </label>
-                        </form>
-                        <form class="form-inline my-1">
+                            <br/>
+                            <div>Password: </div>
                             <label>
                                 <input class="form-control form-control-sm mr-sm-2 mb-0" type="password"
-                                       placeholder="Password">
-                            </label>
-                            <small class="text-muted">
-                                Must be 8-20 characters long.
-                            </small>
-                        </form>
-                        <form class="form-inline my-1">
-                            <label>
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                       placeholder="Re-enter your Password">
+                                       placeholder="Password" required>
                             </label>
                         </form>
                         <form class="form-inline my-1">
-                            <label>
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                       placeholder="Email">
-                            </label>
-                        </form>
-                        <form class="form-inline my-1">
-                            <label>
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="number"
-                                       placeholder="Phone number">
-                            </label>
-                        </form>
-                        <form class="form-inline my-1">
-                            <label>
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                       placeholder="Full Name">
-                            </label>
-                        </form>
-                        <form class="form-inline my-1">
-                            <label>
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="number"
-                                       placeholder="Age">
-                            </label>
-                        </form>
-                        <form class="form-inline my-1">
-                            <input type="checkbox" id="Terms" name="Terms">
+                            <input type="checkbox" id="Terms" name="Terms" required>
                             <label for="Terms">I have read and agree with the Terms and Conditions of Use</label><br>
                         </form>
                         <button class="btn btn-success btn-sm my-0" type="submit">Confirm</button>
@@ -172,6 +142,7 @@
                 </div>
             </div>
         </div>
+        <!-- Register modal ends -->
         <!-- Navbar modal ends-->
     </nav>
     <!-- Nav Ends -->
