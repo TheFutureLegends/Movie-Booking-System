@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
     //Properties
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -54,4 +54,5 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
+
 }
