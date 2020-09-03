@@ -28,6 +28,28 @@ public class MovieController {
         return "movie";
     }
 
+    @RequestMapping("/movieLogin")
+    public String menuLogin(Model model, String keyword){
+        List<Movie> movies = movieService.findAll();
+        if (keyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        } else {
+            Model theModel = model.addAttribute("movies", movies);
+        }
+        return "movie-log-in";
+    }
+
+    @RequestMapping("/movieAdmin")
+    public String menuAdmin(Model model, String keyword){
+        List<Movie> movies = movieService.findAll();
+        if (keyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        } else {
+            Model theModel = model.addAttribute("movies", movies);
+        }
+        return "admin/movie-log-in";
+    }
+
     @RequestMapping("/movie/login")
     public String login(Model model){
         List<Movie> movies = movieService.findAll();
