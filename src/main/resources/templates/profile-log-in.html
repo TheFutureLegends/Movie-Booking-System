@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" th:href="@{src/main/resources/static/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/style.css}">
 
 </head>
 
@@ -96,23 +96,24 @@
 
         <!-- Profile page-->
         <section id="profile-page">
-            
+            <table>
+                <tr>
             <div class="container">
                 <div class="row">               
-                        
+                    <td>
                     <div class="profile-image">
                             <img th:src="@{/images/logo.jpg}" class="img" alt="Profile" width="304" height="236; ">
-                            <br>
-                            
-                            <button class="profile_image_button" type="button">Upload Profile Image</button>
                     </div>
-    
+                            
+                    <div><button class="profile_image_button" type="button">Upload Profile Image</button>
+                    </div>
+                    </td>
                     <div class="profile col-md-8 col-sm-8">    
                             <h1 class="profile">janedoe_</h1>
                             
                             <div>
                                 
-                                <button class="dropdown button button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
+                                <button class="dropdown btn_profile button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#"> Edit profile</a></li>
@@ -129,12 +130,14 @@
                             
                             </p>        
                     </div>
-                    
+
                 </div>
                 <!-- End of profile section -->
     
             </div>
             <!-- End of container -->
+                </tr>
+            </table>
         </section>
         <br>
 
