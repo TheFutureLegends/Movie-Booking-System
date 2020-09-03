@@ -18,28 +18,39 @@
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
             <a class="navbar-brand" th:href="@{/home/login}">
-                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
+                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
                      style="width:60px;">
             </a>
-            <!-- Movie -->
+            <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
                 </li>
             </ul>
-            <!-- Theaters -->
+
+            <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
                 </li>
             </ul>
 
+
+            <div class="md-form form-sm my-0">
+                <form class="form-inline my-1">
+                    <label>
+                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                    </label>
+                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+                </form>
+            </div>
+
             <!-- User Account -->
             <ul class="nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                        data-toggle="dropdown">
-                        Your Account
+                       data-toggle="dropdown">
+                        Your Acount
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
@@ -49,49 +60,6 @@
                     </div>
                 </li>
             </ul>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="#">Cultureplex</a>
-                </li>
-            </ul>
-
-            <!-- Search bar -->
-            <div class="md-form form-sm my-0">
-                <form class="form-inline my-1" th:action="@{/movie}">
-                    <label for="txtSearch">
-                        <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by movie name">
-                    </label>
-                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-                </form>
-            </div>
-
-            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                data-target="#Ticket">Tickets</button>
-            <!-- The Modal -->
-            <div class="modal fade" id="Ticket">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Membership Require</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            You have to be a member of CINEMA in order to use this function
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </nav>
         <!-- Navbar Ends -->
         <br>
