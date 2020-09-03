@@ -66,18 +66,14 @@
 
         <!-- Profile page-->
         <section id="profile-page">
-            <table>
-                <tr>
             <div class="container">
-                <div class="row">               
-                    <td>
+                <div class="row">
                     <div class="profile-image">
                             <img th:src="@{/images/logo.jpg}" class="img" alt="Profile" width="304" height="236; ">
                     </div>
-                            
+                          <br>
                     <div><button class="profile_image_button" type="button">Upload Profile Image</button>
                     </div>
-                    </td>
                     <div class="profile col-md-8 col-sm-8">    
                             <h1 class="profile">janedoe_</h1>
                             
@@ -86,8 +82,7 @@
                                 <button class="dropdown btn_profile button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"> Edit profile</a></li>
-                                        <li><a class="dropdown-item" href="#"> Change password</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/profile/login/edit}"> Edit profile</a></li>
                                       </ul>
                             </div>
                             <p>
@@ -106,8 +101,6 @@
     
             </div>
             <!-- End of container -->
-                </tr>
-            </table>
         </section>
         <br>
 
