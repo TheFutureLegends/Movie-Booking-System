@@ -14,4 +14,9 @@ public class HomeController {
     public String login(){
         return "homepage-log-in";
     }
+
+    @RequestMapping("/home/admin")
+    public String adminLogin(){
+        return "admin/homepage-log-in";
+    }
 }

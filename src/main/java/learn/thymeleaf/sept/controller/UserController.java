@@ -32,7 +32,11 @@ public class UserController {
         while(userList.hasNext()) {
             if (userName.equals(userList.getUsers().get(i).getUserName())) {
                 if (password.equals(userList.getUsers().get(i).getPassword())) {
-                    return "homepage-log-in";
+                    if (userList.getUsers().get(i).getRole().equals("admin")) {
+                        return "admin/homepage-log-in";
+                    } else {
+                        return "homepage-log-in";
+                    }
                 }
             }
             i++;

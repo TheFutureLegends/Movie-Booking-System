@@ -35,4 +35,11 @@ public class MovieController {
         return "movie-log-in";
     }
 
+    @RequestMapping("/movie/admin")
+    public String adminLogin(Model model){
+        List<Movie> movies = movieService.findAll();
+        Model theModel = model.addAttribute("movies", movies);
+        return "admin/movie-log-in";
+    }
+
 }

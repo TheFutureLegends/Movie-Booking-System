@@ -14,4 +14,9 @@ public class TheatersController {
     public String login(){
         return "theater-log-in";
     }
+
+    @RequestMapping("/theater/admin")
+    public String adminLogin(){
+        return "admin/theater-log-in";
+    }
 }
