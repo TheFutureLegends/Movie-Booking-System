@@ -60,9 +60,11 @@ public class MovieController {
 
     // listing movies as membership
     @RequestMapping("/movie/login")
-    public String login(Model model){
+    public String login(@RequestParam("userId")int theId,Model userModel,Model movieModel){
         List<Movie> movies = movieService.findAll();
-        Model theModel = model.addAttribute("movies", movies);
+        User user = userService.findById(theId);
+        Model theMovieModel = movieModel.addAttribute("movies", movies);
+        Model theUserModel = userModel.addAttribute("user", user);
         return "movie-log-in";
     }
 

@@ -21,9 +21,13 @@ public class TheatersController {
     }
 
     @RequestMapping("/theater/login")
-    public String login(){
+    public String login(@RequestParam("userId")int theId,Model userModel){
+            User user = userService.findById(theId);
+            Model theUserModel = userModel.addAttribute("user", user);
+
         return "theater-log-in";
     }
+
 
     @RequestMapping("/theater/admin")
     public String adminLogin(@RequestParam("userId")int theId, Model userModel){
