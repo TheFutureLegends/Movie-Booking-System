@@ -16,30 +16,30 @@
 
     <div class="container" style="margin-top:30px">
         <!-- Navbar and main content -->
-        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" th:href="@{/home/login}">
+        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;" th:object="${user}">
+            <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
                 <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
                      style="width:60px;">
             </a>
             <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
                 </li>
             </ul>
 
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
                 </li>
             </ul>
 
-
+            <!-- Search bar -->
             <div class="md-form form-sm my-0">
-                <form class="form-inline my-1">
-                    <label>
-                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                <form class="form-inline my-1" th:action="@{/movieLogin}">
+                    <label for="txtSearch">
+                        <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by movie name">
                     </label>
                     <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
                 </form>
@@ -49,8 +49,7 @@
             <ul class="nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                       data-toggle="dropdown">
-                        Your Account
+                       data-toggle="dropdown" th:text="*{userName}">
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>

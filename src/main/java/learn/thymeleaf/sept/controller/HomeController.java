@@ -26,8 +26,11 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(@RequestParam("userId")int theId,Model userModel){
+        User user = userService.findById(theId);
+        Model theUserModel = userModel.addAttribute("user", user);
         return "homepage-log-in";
+
     }
 
     @RequestMapping("/admin")
