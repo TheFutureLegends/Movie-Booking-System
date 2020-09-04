@@ -18,7 +18,6 @@ public class User{
     private String password;
 
     @Column(name="role")
-    @Value("${role:User}")
     private String role;
 
     //Constructors
