@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class UserList implements Iterator {
+public class UserList implements UserListIterator {
 
     List<User> users = new ArrayList<>();
     int currentItem = 0;
