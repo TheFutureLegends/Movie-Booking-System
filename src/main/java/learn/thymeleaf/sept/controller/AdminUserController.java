@@ -73,4 +73,14 @@ public class AdminUserController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/admin/user/list";
     }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute("user") User user) {
+
+        // save the user
+        userService.create(user);
+
+        // use a redirect to prevent duplicate submissions
+        return "index";
+    }
 }

@@ -1,5 +1,7 @@
 package learn.thymeleaf.sept.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class User{
     private String password;
 
     @Column(name="role")
+    @Value("${role:User}")
     private String role;
 
     //Constructors
