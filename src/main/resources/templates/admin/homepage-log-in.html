@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div class="container" style="margin-top:30px">
+<div class="container" style="margin-top:30px" th:object="${user}">
     <!-- Navbar and main content -->
     <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
         <a class="navbar-brand" th:href="@{/home/admin}">
@@ -23,14 +23,14 @@
         <!-- Movies Link -->
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" style="color: white;" th:href="@{/movie/admin}">Movies</a>
+                <a class="nav-link" style="color: white;" th:href="@{/movie/admin(userId = *{id})}">Movies</a>
             </li>
         </ul>
 
         <!-- Theaters Link -->
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" style="color: white;" th:href="@{/theater/admin}">Theaters</a>
+                <a class="nav-link" style="color: white;" th:href="@{/theater/admin(userId = *{id})}">Theaters</a>
             </li>
         </ul>
 
@@ -45,7 +45,7 @@
 
         <!-- User Account -->
         <ul class="nav">
-            <li class="nav-item dropdown" th:object="${user}">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
                    data-toggle="dropdown" th:text="*{userName}"> </a>
                 <div class="dropdown-menu">
