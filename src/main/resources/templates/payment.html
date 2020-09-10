@@ -18,8 +18,8 @@
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
             <a class="navbar-brand" th:href="@{/home/login}">
-                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
-                    style="width:60px;">
+                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
+                     style="width:60px;">
             </a>
             <!-- Movies Link -->
             <ul class="nav">
@@ -35,26 +35,6 @@
                 </li>
             </ul>
 
-            <!-- User Account -->
-            <ul class="nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                        data-toggle="dropdown">
-                        Your Acount
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="profile-log-in.html">Profile</a>
-                        <a class="dropdown-item" href="#">History</a>
-                        <a class="dropdown-item" href="#">Setting</a>
-                        <a class="dropdown-item" href="index.html">Log-out</a>
-                    </div>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="#">Cultureplex</a>
-                </li>
-            </ul>
 
             <div class="md-form form-sm my-0">
                 <form class="form-inline my-1">
@@ -65,35 +45,23 @@
                 </form>
             </div>
 
-            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                data-target="#Ticket">Tickets</button>
-            <!-- The Modal -->
-            <div class="modal fade" id="Ticket">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Membership Require</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            You have to be a member of CINEMA in order to use this function
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
+            <!-- User Account -->
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
+                       data-toggle="dropdown">
+                        Your Acount
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
+                        <a class="dropdown-item" th:href="@{/home}">Log-out</a>
                     </div>
-                </div>
-            </div>
-
+                </li>
+            </ul>
         </nav>
         <!-- Navbar Ends -->
+        <br>
 
         <!-- Payment starts -->   
         <div class="container py-5">
@@ -145,20 +113,22 @@
                                         </div>
                                         <div class="card-footer"> 
                                             <button type="button"
-                                                class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment
+                                                class="subscribe btn btn-primary btn-block shadow-sm" data-toggle="modal" data-target="#paymentConfirmation"> Confirm Payment
                                             </button>
                                         </div>    
                                     </form>
                                 </div>
                             <!-- Credit card End -->
+
                             <!-- Paypal -->
                             <div id="paypal" class="tab-pane fade pt-3">
                                 <h6 class="pb-2">Select your paypal account type</h6>
                                 <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
-                                <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
+                                <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
                                 <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
                             <!-- Paypal end -->
+
                             <!-- Bank transfer -->
                             <div id="net-banking" class="tab-pane fade pt-3">
                                 <div class="form-group "> <label>
@@ -177,7 +147,7 @@
                                         <option>Bank 10</option>
                                     </select> </div>
                                 <div class="form-group">
-                                    <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceed Pyment</button> </p>
+                                    <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fas fa-mobile-alt mr-2"></i> Proceed Pyment</button> </p>
                                 </div>
                                 <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
@@ -189,6 +159,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal for payment confirmation starts -->
+    <div class="modal fade" id="paymentConfirmation">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title">Thank you for the purchase</h3>
+                    <button th:onclick="'window.location.href = \'' + @{/home} + '\''" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button th:onclick="'window.location.href = \'' + @{/home} + '\''" data-dismiss="modal" type="button" class="btn btn-primary"><b>Proceed</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for payment confirmation ends -->
 
         <br>
 

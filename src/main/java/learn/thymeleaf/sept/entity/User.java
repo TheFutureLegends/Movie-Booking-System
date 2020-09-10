@@ -1,10 +1,12 @@
 package learn.thymeleaf.sept.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
     //Properties
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -54,4 +56,5 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
+
 }

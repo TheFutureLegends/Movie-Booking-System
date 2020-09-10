@@ -73,4 +73,5 @@ public class AdminUserController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/admin/user/list";
     }
+
 }

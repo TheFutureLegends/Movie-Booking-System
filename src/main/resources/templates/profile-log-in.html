@@ -9,16 +9,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{/css/style.css}">
+
 </head>
 
 <body>
     <div class="container" style="margin-top:30px">
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" href="homepage-log-in.html">
-                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
-                    style="width:60px;">
+            <a class="navbar-brand" th:href="@{/home/login}">
+                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
+                     style="width:60px;">
             </a>
             <!-- Movies Link -->
             <ul class="nav">
@@ -30,92 +31,57 @@
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="theater-log-in.html">Theaters</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
                 </li>
             </ul>
+
+
+            <div class="md-form form-sm my-0">
+                <form class="form-inline my-1">
+                    <label>
+                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                    </label>
+                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+                </form>
+            </div>
 
             <!-- User Account -->
             <ul class="nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                        data-toggle="dropdown">
+                       data-toggle="dropdown">
                         Your Acount
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
-                        <a class="dropdown-item" href="#">History</a>
-                        <a class="dropdown-item" href="#">Setting</a>
-                        <a class="dropdown-item" th:href="@{/home}">Log-out</a>
+                        <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
+                        <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>
                 </li>
             </ul>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="#">Cultureplex</a>
-                </li>
-            </ul>
-
-            <div class="md-form form-sm my-0">
-                <form class="form-inline my-1">
-                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
-                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-                </form>
-            </div>
-
-            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                data-target="#Ticket">Tickets</button>
-            <!-- The Modal -->
-            <div class="modal fade" id="Ticket">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Membership Require</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            You have to be a member of CINEMA in order to use this function
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </nav>
         <!-- Navbar Ends -->
         <br>
 
         <!-- Profile page-->
         <section id="profile-page">
-            
             <div class="container">
-                <div class="row">               
-                        
-                    <div class="profile-image">    
+                <div class="row">
+                    <div class="profile-image">
                             <img th:src="@{/images/logo.jpg}" class="img" alt="Profile" width="304" height="236; ">
-                            <br>
-                            
-                            <button class="profile_image_button" type="button" style="float: right;">Upload Profile Image</button>   
                     </div>
-    
+                          <br>
+                    <div><button class="profile_image_button" type="button">Upload Profile Image</button>
+                    </div>
                     <div class="profile col-md-8 col-sm-8">    
                             <h1 class="profile">janedoe_</h1>
                             
                             <div>
                                 
-                                <button class="dropdown button button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
+                                <button class="dropdown btn_profile button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"> Edit profile</a></li>
-                                        <li><a class="dropdown-item" href="#"> Change password</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/profile/login/edit}"> Edit profile</a></li>
                                       </ul>
                             </div>
                             <p>
@@ -128,7 +94,7 @@
                             
                             </p>        
                     </div>
-                    
+
                 </div>
                 <!-- End of profile section -->
     

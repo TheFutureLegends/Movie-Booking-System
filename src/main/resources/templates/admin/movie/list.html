@@ -47,40 +47,45 @@
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
-            <tr>
-                <th>Movie Name</th>
-                <th>Start Time</th>
-                <th>Available Seats</th>
-                <th>Action</th>
-            </tr>
+        <tr>
+            <th>Movie Name</th>
+            <th>Start Time</th>
+            <th>Available Seats</th>
+            <th>Action</th>
+        </tr>
         </thead>
 
         <tbody>
 
-            <tr th:each="tempMovie : ${movies}">
-                <td th:text="${tempMovie.movieName}"></td>
-                <td th:text="${tempMovie.movieStartTime}"></td>
-                <td th:text="${tempMovie.movieAvailableSeat}"></td>
+        <tr th:each="tempMovie : ${movies}">
+            <td th:text="${tempMovie.movieName}"></td>
+            <td th:text="${tempMovie.movieStartTime}"></td>
+            <td th:text="${tempMovie.movieAvailableSeat}"></td>
 
             <!-- update functions -->
-                <td>
-                    <a th:href = "@{/admin/movie/showFormForUpdate(movieId = ${tempMovie.id})}"
-                       class = "btn btn-warning">
-                        Update
-                    </a>
-                    <a class="btn btn-danger"
-                       onclick="if (!(confirm('Are you sure want to delete this movie ???'))) return false"
-                       th:href="@{/admin/movie/delete(movieId = ${tempMovie.id})}">
-                        Delete
-                    </a>
-                </td>
-            </tr>
+            <td>
+                <a th:href = "@{/admin/movie/showFormForUpdate(movieId = ${tempMovie.id})}"
+                   class = "btn btn-warning">
+                    Update
+                </a>
+                <a class="btn btn-danger"
+                   onclick="if (!(confirm('Are you sure want to delete this movie ???'))) return false"
+                   th:href="@{/admin/movie/delete(movieId = ${tempMovie.id})}">
+                    Delete
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
     <!-- Add a button -->
     <a th:href="@{/admin/movie/showFormForAdd}"
        class="btn btn-primary btn-sm mb-3">
         Add Movie
+    </a>
+
+    <a th:href="@{/home/index}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to User Movie List
     </a>
 </div>
 

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css">
+    <title>Theaters</title>
+</head>
+
+<body>
+
+<div class="container" style="margin-top:30px">
+    <!-- Navbar and main content -->
+    <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;" th:object="${user}">
+        <a class="navbar-brand" th:href="@{/home/admin(userId = *{id})}">
+            <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
+                 style="width:60px;">
+        </a>
+        <!-- Movie -->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" th:href="@{/movie/admin(userId = *{id})}">Movies</a>
+            </li>
+        </ul>
+        <!-- Theaters -->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" th:href="@{/theater/admin(userId = *{id})}">Theaters</a>
+            </li>
+        </ul>
+
+        <!-- Search bar -->
+        <div class="md-form form-sm my-0">
+            <form class="form-inline my-1" th:action="@{/movieAdmin}">
+                <label for="txtSearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by movie name">
+                </label>
+                <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- User Account -->
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
+                   data-toggle="dropdown" th:text="*{userName}">
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                    <a class="dropdown-item" href="#">History</a>
+                    <a class="dropdown-item" th:href="@{/admin/user/list}">Add Manager</a>
+                    <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
+                </div>
+            </li>
+        </ul>
+
+    </nav>
+    <!-- Navbar Ends -->
+    <br>
+
+    <!-- Table container -->
+    <div class="container">
+
+
+
+        <table class="table">
+
+            <!-- Theater 1 -->
+            <tr>
+                <td>
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top"
+                             src="https://images.summitmedia-digital.com/spotph/images/2018/07/30/DateFriendlyCinemas_640.jpg"
+                             alt="Card image">
+                        <br>
+                        <img class="card-img-top"
+                             src="https://i.pinimg.com/originals/c8/55/20/c85520b9bae90548faa445ce1ae77339.jpg"
+                             alt="Card image">
+                    </div>
+                </td>
+                <td>
+                    <div class="information">
+                        <h1>Xa Lo Ha Noi</h1>
+                        <p1>
+                            Address: 161 Xa Lo Ha Noi  , Ward Thao Dien, District 2.
+                            <br>
+                            Phone: 1900 8001
+                            <br>
+                            Email: rap1@cgv.com
+                        </p1>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Theater 2 -->
+            <tr>
+                <td>
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top"
+                             src="https://media-cdn.tripadvisor.com/media/photo-s/17/ac/47/13/getlstd-property-photo.jpg"
+                             alt="Card image">
+                        <br>
+                        <img class="card-img-top"
+                             src="https://cdn.archilovers.com/projects/aa7e9611-dea0-4017-88e9-67db72e47203.jpg"
+                             alt="Card image">
+                    </div>
+                </td>
+                <td>
+                    <div class="information">
+                        <h1>Cach Mang Thang 8</h1>
+                        <p1>
+                            Address: 85 Cach Mang Thang Tam  , Ward 15, District 3.
+                            <br>
+                            Phone: 1900 8002
+                            <br>
+                            Email: rap2@cgv.com
+                        </p1>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- Theater 3 -->
+            <tr>
+                <td>
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top"
+                             src="https://image.shutterstock.com/z/stock-vector-cinema-design-above-vector-background-illustration-yellow-705116545.jpg"
+                             alt="Card image">
+                        <br>
+                        <img class="card-img-top"
+                             src="https://media.timeout.com/images/101511309/image.jpg"
+                             alt="Card image">
+                    </div>
+                </td>
+                <td>
+
+                    <div class="information">
+                        <h1>Nguyen Hue</h1>
+                        <p1>
+                            Address: 103 Nguyen Hue  , Ward Ben Nghe, District 1.
+                            <br>
+                            Phone: 1900 8003
+                            <br>
+                            Email: rap3@cgv.com
+                        </p1>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+        </table>
+        <!-- Movie time ends -->
+    </div>
+    <!-- Table container ends -->
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+    <div class="containerr text-center text-md">
+
+        <div class="row">
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase" style= "color: tomato;">Cinema Vietnam</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a th:href="@{/about/login}">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#!">e-CGV</a>
+                    </li>
+                    <li>
+                        <a href="#!">Gift Card</a>
+                    </li>
+                    <li>
+                        <a href="#!">Career</a>
+                    </li>
+                    <li>
+                        <a href="#!">Contact CGV</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase"style= "color: tomato;">Terms and Conditions</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Conditions of Website Use</a>
+                    </li>
+                    <li>
+                        <a href="#!">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a href="#!">Payment Policy</a>
+                    </li>
+                    <li>
+                        <a href="#!">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#!">F.A.Q</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase"style= "color: tomato;">Follow Us</h5>
+
+                <ul class="list-unstyled">
+
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                    <!-- Add font awesome icons -->
+
+                    <li>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-twitter"></a>
+                    </li>
+                    <li>
+                        <a href="#!" class="fa fa-instagram"></a>
+                    </li>
+                    <li>
+                        <a href="#!"class="fa fa-google"></a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase"style= "color: tomato;">Customer Service</h5>
+
+                <ul class="list-unstyled" style="color: steelblue">
+                    <li>
+                        <a>Hotline: 1900 6017</a>
+                    </li>
+                    <li>
+                        <a>Working hours: 8:00 - 22:00 (Monday to Sunday, including Public Holidays)</a>
+                    </li>
+                    <li>
+                        <a>Email support: hoidap@cgv.vn</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="footer text-center py-3" style="color: indianred;">COMPANY CINEMA CGV VIETNAM
+
+    </div>
+
+</footer>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+
+</html>

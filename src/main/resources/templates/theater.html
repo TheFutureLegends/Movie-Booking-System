@@ -17,7 +17,7 @@
     <div class="container" style="margin-top:30px">
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" th:href="@{/home}">
+            <a class="navbar-brand" th:href="@{/home/index}">
                 <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg" alt="logo"
                      style="width:60px;">
             </a>
@@ -34,69 +34,31 @@
                 </li>
             </ul>
 
-
-            <!-- Dropdown -->
-            <ul class="nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                        data-toggle="dropdown">
-                        Membership
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" data-toggle="tooltip" data-placement="right"
-                            title="Already have an account? Sign in now!!!" href="#">
-                            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                                data-target="#Login">Log - in</button>
-                        </a>
-                        <a class="dropdown-item" data-toggle="tooltip" data-placement="right"
-                            title="Create a new account" href="#">
-                            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                                data-target="#Register">Register</button>
-                        </a>
-
-                    </div>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white;" href="#">Cultureplex</a>
-                </li>
-            </ul>
-
             <div class="md-form form-sm my-0">
                 <form class="form-inline my-1">
-                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                    <label>
+                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                    </label>
                     <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
                 </form>
             </div>
 
-            <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
-                data-target="#Ticket">Tickets</button>
+            <ul class="nav">
+                <li class="nav-item">
+                    <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
+                            data-target="#Login">Log - in
+                    </button>
+                </li>
+                <br>
+                <li class="nav-item">
+                    <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
+                            data-target="#Register">Register
+                    </button>
+                </li>
+            </ul>
+            <!-- Navbar ends-->
 
-            <!-- The Modal -->
-            <div class="modal fade" id="Ticket">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Membership Require</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            You have to be a member of CINEMA in order to use this function
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <!-- Navbar modal starts -->
             <div class="modal fade" id="Login">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -109,22 +71,17 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="User-name">
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="Password">
-                            </form>
-                            <div class="form-check mb-2 mr-sm-2">
-                                <input class="form-check-input" type="checkbox" id="inlineFormCheckMD">
-                                <label class="form-check-label" for="inlineFormCheckMD">
-                                    Remember me
+
+                            <form class="form-inline my-1" th:action="@{/user/login}" method="get">
+                                <label for="userNameSearch">
+                                    <input id="userNameSearch" class="form-control form-control-sm mr-sm-2 mb-0" type="text" name="userName" placeholder="User-name">
                                 </label>
-                            </div>
-                            <button class="btn btn-success btn-sm my-0" type="submit">Log-in</button>
-                            <a th:href="@{/theater/login}" class="btn btn-info btn-sm my-0" role="button">Dummy</a>
+                                <label for="passwordSearch">
+                                    <input id="passwordSearch" class="form-control form-control-sm mr-sm-2 mb-0" type="text" name="password"
+                                           placeholder="Password">
+                                </label>
+                                <button class="btn btn-success btn-sm my-0" type="submit">Log-in</button>
+                            </form>
                         </div>
 
                         <!-- Modal footer -->
@@ -135,6 +92,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Register Modal starts -->
             <div class="modal fade" id="Register">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -147,36 +106,22 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="User-name">
+                            <form class="form-inline my-1" action="#" th:action="@{/admin/user/save}" th:object="${user}" method="POST">
+                                <div>Username: </div>
+                                <label>
+                                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
+                                           placeholder="User-name" required>
+                                </label>
+                                <br/>
+                                <div>Password: </div>
+                                <label>
+                                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="password"
+                                           placeholder="Password" required>
+                                </label>
                             </form>
                             <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="password"
-                                    placeholder="Password">
-                                <small class="text-muted">
-                                    Must be 8-20 characters long.
-                                </small>
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="Re-enter your Password">
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="Email">
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="number"
-                                    placeholder="Phone number">
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                    placeholder="Full Name">
-                            </form>
-                            <form class="form-inline my-1">
-                                <input class="form-control form-control-sm mr-sm-2 mb-0" type="number"
-                                    placeholder="Age">
+                                <input type="checkbox" id="Terms" name="Terms" required>
+                                <label for="Terms">I have read and agree with the Terms and Conditions of Use</label><br>
                             </form>
                             <button class="btn btn-success btn-sm my-0" type="submit">Confirm</button>
                         </div>
@@ -189,6 +134,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Register modal ends -->
+            <!-- Navbar modal ends-->
         </nav>
         <!-- Nav Ends -->
         <br>

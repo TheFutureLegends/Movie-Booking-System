@@ -9,4 +9,8 @@ public class ProfileController {
     public String menu(){
         return "profile-log-in";
     }
+    @RequestMapping("/profile/login/edit")
+    public String edit(){
+        return "profile-edit";
+    }
 }
