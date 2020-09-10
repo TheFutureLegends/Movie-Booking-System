@@ -10,5 +10,11 @@ public interface MovieServiceInterface {
     public Movie findById(int id);
     public void create(Movie movie);
     public void deleteById(int id);
-    public List<Movie> findByMovieName(String keyword);
+    public List<Movie> findByMovieName(String movieNameKeyword);
+    public List<Movie> findByCategory(String categoryKeyword);
+    public List<Movie> findByRated(Integer ratedKeyword);
+    public List<Movie> findByMovieNameCategory(String movieNameKeyword, String categoryKeyword);
+    public List<Movie> findByMovieNAmeRated(String movieNameKeyword, Integer ratedKeyword);
+    public List<Movie> findByCategoryRated(String categoryKeyword, Integer ratedKeyword);
+    public List<Movie> findByMovieNameCategoryRated(String movieNameKeyword, String categoryKeyword, Integer ratedKeyword);
 }

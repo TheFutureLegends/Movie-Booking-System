@@ -35,16 +35,6 @@
                 </li>
             </ul>
 
-            <!-- Search bar -->
-            <div class="md-form form-sm my-0">
-                <form class="form-inline my-1" th:action="@{/movieLogin}">
-                    <label for="txtSearch">
-                        <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by movie name">
-                    </label>
-                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-                </form>
-            </div>
-
             <!-- User Account -->
             <ul class="nav">
                 <li class="nav-item dropdown">
@@ -61,6 +51,22 @@
         </nav>
         <!-- Navbar Ends -->
         <br>
+
+        <!-- Search bar -->
+        <div class="md-form form-sm my-0">
+            <form class="form-inline my-1" th:action="@{/movie}">
+                <label for="movieNameSearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="movieNameSearch" type="text" name="movieNameKeyword" placeholder="Search by movie name">
+                </label>
+                <label for="categorySearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="categorySearch" type="text" name="categoryKeyword" placeholder="Search by category">
+                </label>
+                <label for="ratedSearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="ratedSearch" type="number" value="0" name="ratedKeyword" placeholder="Search by maximum rating">
+                </label>
+                <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+            </form>
+        </div>
 
         <!-- Table container -->
         <div class="container">

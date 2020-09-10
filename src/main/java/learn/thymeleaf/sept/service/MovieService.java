@@ -52,7 +52,37 @@ public class MovieService implements MovieServiceInterface {
     }
 
     @Override
-    public List<Movie> findByMovieName(String keyword) {
-        return movieRepository.findByMovieName(keyword);
+    public List<Movie> findByMovieName(String movieNameKeyword) {
+        return movieRepository.findByMovieName(movieNameKeyword);
+    }
+
+    @Override
+    public List<Movie> findByCategory(String categoryKeyword) {
+        return movieRepository.findByCategory(categoryKeyword);
+    }
+
+    @Override
+    public List<Movie> findByRated(Integer ratedKeyword) {
+        return movieRepository.findByRated(ratedKeyword);
+    }
+
+    @Override
+    public List<Movie> findByMovieNameCategory(String movieNameKeyword, String categoryKeyword) {
+        return movieRepository.findByMovieNameCategory(movieNameKeyword, categoryKeyword);
+    }
+
+    @Override
+    public List<Movie> findByMovieNAmeRated(String movieNameKeyword, Integer ratedKeyword) {
+        return movieRepository.findByMovieNameRated(movieNameKeyword, ratedKeyword);
+    }
+
+    @Override
+    public List<Movie> findByCategoryRated(String categoryKeyword, Integer ratedKeyword) {
+        return movieRepository.findByCategoryRated(categoryKeyword, ratedKeyword);
+    }
+
+    @Override
+    public List<Movie> findByMovieNameCategoryRated(String movieNameKeyword, String categoryKeyword, Integer ratedKeyword) {
+        return movieRepository.findByMovieNameCategoryRated(movieNameKeyword, categoryKeyword, ratedKeyword);
     }
 }

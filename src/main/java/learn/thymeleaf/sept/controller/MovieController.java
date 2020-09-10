@@ -24,22 +24,56 @@ public class MovieController {
 
     // Search function for guests
     @RequestMapping("/movie")
-    public String menu(Model model, String keyword){
+    public String menu(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+        if (ratedKeyword == null) {
+            ratedKeyword = 0;
+        } else {
+            ratedKeyword.intValue();
+        }
         List<Movie> movies = movieService.findAll();
-        if (keyword != null) {
-            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategoryRated(movieNameKeyword, categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword == 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategory(movieNameKeyword, categoryKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword == null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNAmeRated(movieNameKeyword, ratedKeyword));
+        } else if (movieNameKeyword == null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategoryRated(categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(movieNameKeyword));
+        } else if (categoryKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategory(categoryKeyword));
+        } else if (ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByRated(ratedKeyword));
         } else {
             Model theModel = model.addAttribute("movies", movies);
         }
         return "movie";
     }
 
-    // Serach function for membership
+    // Search function for membership
     @RequestMapping("/movieLogin")
-    public String menuLogin(Model model, String keyword){
+    public String menuLogin(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+        if (ratedKeyword == null) {
+            ratedKeyword = 0;
+        } else {
+            ratedKeyword.intValue();
+        }
         List<Movie> movies = movieService.findAll();
-        if (keyword != null) {
-            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategoryRated(movieNameKeyword, categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword == 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategory(movieNameKeyword, categoryKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword == null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNAmeRated(movieNameKeyword, ratedKeyword));
+        } else if (movieNameKeyword == null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategoryRated(categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(movieNameKeyword));
+        } else if (categoryKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategory(categoryKeyword));
+        } else if (ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByRated(ratedKeyword));
         } else {
             Model theModel = model.addAttribute("movies", movies);
         }
@@ -48,10 +82,27 @@ public class MovieController {
 
     // Search function for admin
     @RequestMapping("/movieAdmin")
-    public String menuAdmin(Model model, String keyword){
+    public String menuAdmin(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+        if (ratedKeyword == null) {
+            ratedKeyword = 0;
+        } else {
+            ratedKeyword.intValue();
+        }
         List<Movie> movies = movieService.findAll();
-        if (keyword != null) {
-            Model theModel = model.addAttribute("movies", movieService.findByMovieName(keyword));
+        if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategoryRated(movieNameKeyword, categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword != null && ratedKeyword == 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNameCategory(movieNameKeyword, categoryKeyword));
+        } else if (movieNameKeyword != null && categoryKeyword == null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieNAmeRated(movieNameKeyword, ratedKeyword));
+        } else if (movieNameKeyword == null && categoryKeyword != null && ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategoryRated(categoryKeyword, ratedKeyword));
+        } else if (movieNameKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByMovieName(movieNameKeyword));
+        } else if (categoryKeyword != null) {
+            Model theModel = model.addAttribute("movies", movieService.findByCategory(categoryKeyword));
+        } else if (ratedKeyword != 0) {
+            Model theModel = model.addAttribute("movies", movieService.findByRated(ratedKeyword));
         } else {
             Model theModel = model.addAttribute("movies", movies);
         }
