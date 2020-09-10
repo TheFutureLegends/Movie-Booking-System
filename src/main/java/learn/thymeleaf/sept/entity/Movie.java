@@ -41,7 +41,6 @@ public class Movie {
         this.movieName = movieName;
         this.directors = directors;
         this.cast = cast;
-        this.category = category;
         this.premiere = premiere;
         this.duration = duration;
         this.language = language;
