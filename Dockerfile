@@ -1,6 +1,6 @@
 FROM maven:3.6.3-openjdk-11
 WORKDIR /app
-ENV JAVA_HOME /usr/java/openjdk-11
+ENV JAVA_HOME /usr/local/openjdk-11
 ENV MAVEN_HOME /usr/share/maven
 COPY . ./
 RUN mvn clean install
