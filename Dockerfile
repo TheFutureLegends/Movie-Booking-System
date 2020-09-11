@@ -6,4 +6,4 @@ COPY . ./
 RUN mvn clean install
 
 # RUN cp /root/.m2/repository/learn/thymeleaf/sept/0.0.1-SNAPSHOT/sept-0.0.1-SNAPSHOT.jar /app/
-CMD ["java", "-jar", "/app/target/sept-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/target/sept-0.0.1-SNAPSHOT.jar"]
