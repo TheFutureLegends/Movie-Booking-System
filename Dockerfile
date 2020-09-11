@@ -4,6 +4,4 @@ ENV JAVA_HOME /usr/java/openjdk-14
 ENV MAVEN_HOME /usr/share/maven
 COPY . ./
 RUN mvn clean install
-
-# RUN cp /root/.m2/repository/learn/thymeleaf/sept/0.0.1-SNAPSHOT/sept-0.0.1-SNAPSHOT.jar /app/
-ENTRYPOINT ["java", "-jar", "/app/target/sept-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/target/sept-0.0.1-SNAPSHOT.jar"]
