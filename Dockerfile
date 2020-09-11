@@ -5,6 +5,5 @@ ENV MAVEN_HOME /usr/share/maven
 COPY . ./
 RUN mvn clean install
 
-VOLUME /tmp
 ADD target/sept-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
