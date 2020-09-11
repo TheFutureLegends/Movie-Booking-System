@@ -4,7 +4,10 @@ create table movie_booking.user
         primary key,
     user_name varchar(500) null,
     password  varchar(500) null,
-    role      varchar(500) null
+    role      varchar(500) null,
+    u_profile_id int          null,
+    constraint user_user_profile_id_fk
+        foreign key (u_profile_id) references user_profile (id)
 ) engine = innoDB charset = utf8 ;
 
 create table movie_booking.movie
@@ -46,5 +49,6 @@ create table movie_booking.reservation
     constraint reservation_user_profile_id_fk
         foreign key (u_profile_id) references movie_booking.user_profile (id)
 ) engine = innoDB charset = utf8 ;
+
 
 

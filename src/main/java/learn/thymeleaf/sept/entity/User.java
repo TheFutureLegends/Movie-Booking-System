@@ -1,7 +1,5 @@
 package learn.thymeleaf.sept.entity;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +18,11 @@ public class User{
     @Column(name="role")
     private String role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_profile_id")
+    private UserProfile userProfile;
+
+
     //Constructors
     public User() { }
 
@@ -27,6 +30,7 @@ public class User{
         this.userName = userName;
         this.password = password;
         this.role = role;
+        this.userProfile = userProfile;
     }
 
     //Getters
@@ -39,12 +43,19 @@ public class User{
     public String getPassword() { return password; }
     public String getRole() { return role; }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
 
     //Setters
     public void setId(int id) { this.id = id; }
     public void setUserName(String userName) { this.userName = userName; }
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
 
     //toString
     @Override

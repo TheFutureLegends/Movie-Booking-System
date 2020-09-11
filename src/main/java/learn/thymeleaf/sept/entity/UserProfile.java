@@ -15,9 +15,9 @@ public class UserProfile {
     @Column private String phone;
     @Column private String email;
     @Column private String address;
-
     @OneToMany(mappedBy = "userProfile", fetch = FetchType.LAZY)
     private List<Reservation> reservations;
+
 
     //Constructor
     public UserProfile() { }
@@ -62,18 +62,20 @@ public class UserProfile {
     }
     public void setAddress(String address) { this.address = address; }
     public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
+//toString
 
-    //toString
     @Override
     public String toString() {
-        return "Reservation{" +
+        return "UserProfile{" +
                 "id=" + id +
-                ", fullName=" + fullName +
+                ", fullName='" + fullName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
+                ", reservations=" + reservations +
                 '}';
     }
+
 
     //add reservations
 

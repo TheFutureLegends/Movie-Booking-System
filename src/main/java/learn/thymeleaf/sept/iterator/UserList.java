@@ -3,10 +3,9 @@ package learn.thymeleaf.sept.iterator;
 import learn.thymeleaf.sept.entity.User;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class UserList implements UserListIterator {
+public class UserList implements ListIterator {
 
     List<User> users = new ArrayList<>();
     int currentItem = 0;

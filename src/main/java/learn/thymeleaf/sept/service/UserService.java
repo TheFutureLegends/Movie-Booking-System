@@ -55,4 +55,5 @@ public class UserService implements UserServiceInterface {
     public List<User> findByUserName(String keyword) {
         return userRepository.findByUserName(keyword);
     }
+
 }
