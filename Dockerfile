@@ -5,6 +5,4 @@ ENV MAVEN_HOME /usr/share/maven
 COPY . ./
 
 RUN mvn clean install
-
-EXPOSE 8080
-CMD ["mvn", "compile"]
+CMD ["java", "-jar", "target/sept-0.0.1-SNAPSHOT.jar"]
