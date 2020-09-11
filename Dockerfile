@@ -5,5 +5,5 @@ ENV MAVEN_HOME /usr/share/maven
 COPY . ./
 RUN mvn clean install
 
-ADD target/sept-0.0.1-SNAPSHOT.jar app.jar
+COPY /root/.m2/repository/learn/thymeleaf/sept/0.0.1-SNAPSHOT/sept-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
