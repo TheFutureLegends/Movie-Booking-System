@@ -22,7 +22,7 @@ services:
 before_install:
   - docker build -t minhpro332/movie-booking .
 script:
-  - docker run -p 8080:8080 minhpro332/movie-booking
+  - docker run -p -d 8080:8080 minhpro332/movie-booking
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push minhpro332/movie-booking
