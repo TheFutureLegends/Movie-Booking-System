@@ -1,16 +1,31 @@
-language: java
-jdk:
-  - openjdk14
+# language: java
+# jdk:
+#   - openjdk14
 
-os:
-  - linux
-  - osx
+# os:
+#   - linux
+#   - osx
 
-jobs:
-  include:
-    - stage: Test
-      script: ./mvnw clean test
-notifications:
-  email:
-    - s3634831@rmit.edu.vn
-    - s3759797@rmit.edu.vn
+# jobs:
+#   include:
+#     - stage: Test
+#       script: ./mvnw clean test
+# notifications:
+#   email:
+#     - s3634831@rmit.edu.vn
+#     - s3759797@rmit.edu.vn
+
+
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t minhpro332/movie-booking .
+script:
+  - docker run -p 8080:8080 minhpro332/movie-booking
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push minhpro332/movie-booking
+
+  # DOCKER_PASSWORD = minhpro332
+  # DOCKER_USERNAME = minhpro332
