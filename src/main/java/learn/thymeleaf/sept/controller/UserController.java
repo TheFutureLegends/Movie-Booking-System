@@ -44,6 +44,8 @@ public class UserController {
                         theModel.addAttribute("user", user);
                         return "homepage-log-in";
                     }
+                } else {
+                    return "index";
                 }
             }
             i++;

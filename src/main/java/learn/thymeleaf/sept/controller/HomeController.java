@@ -34,7 +34,9 @@ public class HomeController {
     }
 
     @RequestMapping("/admin")
-    public String adminLogin(){
+    public String adminLogin(@RequestParam("userId")int theId, Model userModel){
+        User user = userService.findById(theId);
+        Model theUserModel = userModel.addAttribute("user", user);
         return "admin/homepage-log-in";
     }
 
