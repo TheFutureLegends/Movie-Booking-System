@@ -74,7 +74,7 @@
                           <br>
                     <div><button class="profile_image_button" type="button">Upload Profile Image</button>
                     </div>
-                    <div class="profile col-md-8 col-sm-8">    
+                    <div class="profile col-md-8 col-sm-8" th:each="tempUser : ${users}">
                             <h1 class="profile">janedoe_</h1>
                             
                             <div>
@@ -86,11 +86,19 @@
                                       </ul>
                             </div>
                             <p>
-                                <span class="profile-real-name"><b>Real name: </b>Jane Doe
+                                <span class="profile-real-name">
+                                    <b>Real name: </b>
+                                    <b th:text="${tempUser.fullName}"></b>
                                 <br>
-                                <b>Phone number: </b>
+                                    <b>Phone number: </b>
+                                    <b th:text="${tempUser.phone}"></b>
                                 <br>                               
-                                <b>Email address: </b>
+                                    <b>Email address: </b>
+                                    <b th:text="${tempUser.email}"></b><br>
+                                <br>
+                                    <b>Address: </b>
+                                    <b th:text="${tempUser.address}"></b>
+
                                 </span>            
                             
                             </p>        
