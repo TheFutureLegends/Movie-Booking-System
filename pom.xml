@@ -88,12 +88,16 @@
 		</dependency>
 	</dependencies>
 
-	<!-- <build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		        	<source>1.6</source>
+		        	<target>1.6</target>
+		      	</configuration>
 			</plugin>
 		</plugins>
-	</build> -->
+	</build>
 </project>
