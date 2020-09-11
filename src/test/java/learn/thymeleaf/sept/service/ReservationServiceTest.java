@@ -31,7 +31,6 @@ class ReservationServiceTest {
     @Test
     void findAll() {
         // declare 2 fake ids
-        int id = 1;
         int id2 = 2;
         // create mock user profile 1
         Reservation mockReservation1 = new Reservation();
