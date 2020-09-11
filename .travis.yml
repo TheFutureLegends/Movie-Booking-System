@@ -16,6 +16,16 @@
 #     - s3759797@rmit.edu.vn
 
 
+language: java
+os:
+  - linux
+dist:
+  - trusty
+  - precise
+  - focal
+  - bionic
+  - xenial
+
 sudo: required
 services:
   - docker
