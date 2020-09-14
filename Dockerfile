@@ -1,9 +1,6 @@
-FROM maven:3.6.3-openjdk-14
-VOLUME [ "/app" ]
+FROM openjdk:16-alpine
 WORKDIR /app
-ENV JAVA_HOME /usr/java/openjdk-14
-ENV MAVEN_HOME /usr/share/maven
-COPY . ./
-RUN mvn test
+ENV JAVA_HOME /opt/openjdk-16
+COPY /app/target/sept-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/target/sept-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
