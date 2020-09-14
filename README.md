@@ -8,5 +8,3 @@ This is the first version of the project. Most of the important features are alr
 5. Dummy login
 6. User profile
 7. List of theatres
-
-Apart from this, this version also has its entities tested with 35 test cases, covering 100% of the backend code.
