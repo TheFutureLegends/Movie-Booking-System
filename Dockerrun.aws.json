@@ -1,7 +1,12 @@
 {
   "AWSEBDockerrunVersion": "1",
-  "Logging": "/tmp/sample-app",
-  "Image": {
-  	"Update": "false"
-  }
+  "containerDefinitions": [{
+    "name": "movie-booking",
+    "image": "minhpro332/movie-booking",
+    "essentials": true,
+    "portMappings": [{ 
+          "containerPort": 8080,
+          "hostPort": 8080
+    }]
+  }]
 }
