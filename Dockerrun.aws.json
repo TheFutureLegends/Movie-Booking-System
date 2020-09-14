@@ -1,11 +1,12 @@
 {
   "AWSEBDockerrunVersion": "1",
-  "Image": {
-    "Name": "minhpro332/movie-booking"
-  },
-  "Ports": [
-    {
-      "ContainerPort": "8080"
-    }
-  ]
+  "containerDefinitions": [{
+    "name": "movie-booking",
+    "image": "minhpro332/movie-booking",
+    "essentials": true,
+    "portMappings": [{ 
+          "containerPort": 8080,
+          "hostPort": 8080
+    }]
+  }]
 }
