@@ -14,48 +14,37 @@
 
 <body>
 
-    <div class="container" style="margin-top:30px">
+    <div class="container" style="margin-top:30px" th:object="${user}">
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" th:href="@{/home/login}">
+            <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
                 <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
                      style="width:60px;">
             </a>
             <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
                 </li>
             </ul>
 
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
                 </li>
             </ul>
-
-
-            <div class="md-form form-sm my-0">
-                <form class="form-inline my-1">
-                    <label>
-                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
-                    </label>
-                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-                </form>
-            </div>
 
             <!-- User Account -->
             <ul class="nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                       data-toggle="dropdown">
-                        Your Acount
+                       data-toggle="dropdown" th:text="*{userName}">
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
                         <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
-                        <a class="dropdown-item" th:href="@{/home}">Log-out</a>
+                        <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>
                 </li>
             </ul>
@@ -64,7 +53,7 @@
         <br>
 
         <!-- Payment starts -->   
-        <div class="container py-5">
+        <div class="container py-5" th:object="${movie}">
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="card ">
@@ -111,10 +100,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer"> 
-                                            <button type="button"
-                                                class="subscribe btn btn-primary btn-block shadow-sm" data-toggle="modal" data-target="#paymentConfirmation"> Confirm Payment
-                                            </button>
+                                        <div class="card-footer">
+                                            <a
+                                                class="subscribe btn btn-primary btn-block shadow-sm" th:href="@{/payment/save(userId = ${user.id}, movieName = *{movieName})}"> Confirm Payment
+                                            </a>
                                         </div>    
                                     </form>
                                 </div>
@@ -147,7 +136,7 @@
                                         <option>Bank 10</option>
                                     </select> </div>
                                 <div class="form-group">
-                                    <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fas fa-mobile-alt mr-2"></i> Proceed Pyment</button> </p>
+                                    <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
                                 </div>
                                 <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
@@ -168,12 +157,12 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h3 class="modal-title">Thank you for the purchase</h3>
-                    <button th:onclick="'window.location.href = \'' + @{/home} + '\''" class="close" data-dismiss="modal">&times;</button>
+                    <button th:onclick="'window.location.href = \'' + @{/home/login(userId = *{id})} + '\''" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button th:onclick="'window.location.href = \'' + @{/home} + '\''" data-dismiss="modal" type="button" class="btn btn-primary"><b>Proceed</b></button>
+                    <a th:href="@{/home/login(userId = *{id})}" data-dismiss="modal" class="btn btn-primary"><b>Proceed</b></a>
                 </div>
             </div>
         </div>
