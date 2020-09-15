@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
 
     private final UserService userService;
@@ -19,7 +19,7 @@ public class HomeController {
         this.userService = userService;
     }
 
-    @RequestMapping("")
+    @RequestMapping("/index")
     public String home(Model theModel){
         theModel.addAttribute("user", new User());
         return "index";
