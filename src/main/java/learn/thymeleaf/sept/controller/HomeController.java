@@ -1,6 +1,7 @@
 package learn.thymeleaf.sept.controller;
 
 import learn.thymeleaf.sept.entity.User;
+import learn.thymeleaf.sept.entity.UserProfile;
 import learn.thymeleaf.sept.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +21,9 @@ public class HomeController {
     }
 
     @RequestMapping("/index")
-    public String home(Model theModel){
+    public String home(Model theModel, Model userProfileModel){
         theModel.addAttribute("user", new User());
+        userProfileModel.addAttribute("userProfile", new UserProfile());
         return "index";
     }
 

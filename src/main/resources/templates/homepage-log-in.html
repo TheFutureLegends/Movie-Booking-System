@@ -51,7 +51,7 @@
                        data-toggle="dropdown" th:text="*{userName}">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
                         <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
                         <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>

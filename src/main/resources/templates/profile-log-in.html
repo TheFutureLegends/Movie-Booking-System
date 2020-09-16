@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <div class="container" style="margin-top:30px">
+    <div class="container" style="margin-top:30px" th:object="${user}">
         <!-- Navbar and main content -->
-        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;" th:object="${user}">
+        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
             <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
                 <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
                      style="width:60px;">
@@ -24,14 +24,14 @@
             <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
                 </li>
             </ul>
 
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
                 </li>
             </ul>
 
@@ -52,7 +52,7 @@
                        data-toggle="dropdown" th:text="*{userName}">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
                         <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
                         <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>
@@ -73,14 +73,14 @@
                     <div><button class="profile_image_button" type="button">Upload Profile Image</button>
                     </div>
                     <div class="profile col-md-8 col-sm-8">
-                            <h1 class="profile">janedoe_</h1>
+                            <h1 class="profile" th:text="*{userName}"></h1>
                             
                             <div>
                                 
                                 <button class="dropdown btn_profile button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" th:href="@{/profile/login/edit}"> Edit profile</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/profile/login/edit(userId = *{id})}"> Edit profile</a></li>
                                       </ul>
                             </div>
                             <p th:each="tempUser : ${users}">
