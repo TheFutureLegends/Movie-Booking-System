@@ -51,4 +51,5 @@ public class HomeController {
         // use a redirect to prevent duplicate submissions
         return "redirect:/home/index";
     }
+
 }

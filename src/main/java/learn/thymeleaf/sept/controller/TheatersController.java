@@ -16,7 +16,8 @@ public class TheatersController {
     }
 
     @RequestMapping("/theater")
-    public String menu(){
+    public String menu(Model userModel){
+        userModel.addAttribute("user", new User());
         return "theater";
     }
 

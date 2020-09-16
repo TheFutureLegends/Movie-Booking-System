@@ -4,6 +4,7 @@ import learn.thymeleaf.sept.entity.Movie;
 import learn.thymeleaf.sept.entity.User;
 import learn.thymeleaf.sept.service.MovieService;
 import learn.thymeleaf.sept.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,10 @@ public class MovieController {
 
     // Search function for guests
     @RequestMapping("/movie")
-    public String menu(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+    public String menu(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword, Model userModel){
+
+        userModel.addAttribute("user", new User());
+
         if (ratedKeyword == null) {
             ratedKeyword = 0;
         } else {
@@ -108,6 +112,7 @@ public class MovieController {
         }
         return "admin/movie-log-in";
     }
+
 
     // listing movies as membership
     @RequestMapping("/movie/login")

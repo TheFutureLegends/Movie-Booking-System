@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -21,12 +23,17 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String userLogin(String userName, String password, Model theModel) {
+    public String userLogin(String userName, String password, Model theModel, HttpServletResponse response) throws IOException {
 
         // get user from db
         List<User> users = userService.findAll();
         UserList userList = new UserList();
         userList.setUsers(users);
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+
         int i = 0;
         int tempId;
 
@@ -45,13 +52,17 @@ public class UserController {
                         return "homepage-log-in";
                     }
                 } else {
-                    return "index";
+                    out.println("<script>alert('Wrong username or password'); location.href='/home/index';</script>");
+                    out.flush();
+                    return "redirect:/home/index";
                 }
             }
             i++;
             userList.next();
         }
-        return "index";
+        out.println("<script>alert('Wrong username or password'); location.href='/home/index';</script>");
+        out.flush();
+        return "redirect:/home/index";
     }
 
 }

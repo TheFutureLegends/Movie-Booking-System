@@ -34,15 +34,6 @@
                 </li>
             </ul>
 
-            <div class="md-form form-sm my-0">
-                <form class="form-inline my-1">
-                    <label>
-                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
-                    </label>
-                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-                </form>
-            </div>
-
             <ul class="nav">
                 <li class="nav-item">
                     <button class="btn btn-danger btn-sm my-0" type="submit" data-toggle="modal"
@@ -106,24 +97,22 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="form-inline my-1" action="#" th:action="@{/admin/user/save}" th:object="${user}" method="POST">
-                                <div>Username: </div>
-                                <label>
-                                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="text"
-                                           placeholder="User-name" required>
-                                </label>
-                                <br/>
-                                <div>Password: </div>
-                                <label>
-                                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="password"
-                                           placeholder="Password" required>
-                                </label>
+                            <form class="form-inline my-1" th:action="@{/home/register}" th:object="${user}" method="POST">
+
+                                <!-- Add hidden form field to handle update -->
+                                <input type="hidden" th:field="*{id}"/>
+
+                                <input type="text" th:field="*{userName}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="User Name">
+
+                                <input type="text" th:field="*{password}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Password">
+
+                                <input type="hidden" th:field="*{role}" placeholder="Role">
+
+                                <button type="submit" class="btn btn-success btn-sm my-0">Register</button>
+
                             </form>
-                            <form class="form-inline my-1">
-                                <input type="checkbox" id="Terms" name="Terms" required>
-                                <label for="Terms">I have read and agree with the Terms and Conditions of Use</label><br>
-                            </form>
-                            <button class="btn btn-success btn-sm my-0" type="submit">Confirm</button>
                         </div>
 
                         <!-- Modal footer -->

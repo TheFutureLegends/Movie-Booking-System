@@ -35,15 +35,6 @@
             </li>
         </ul>
 
-        <div class="md-form form-sm my-0">
-            <form class="form-inline my-1">
-                <label>
-                    <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
-                </label>
-                <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-            </form>
-        </div>
-
         <!-- User Account -->
         <ul class="nav">
             <li class="nav-item dropdown">
@@ -60,14 +51,16 @@
 
     </nav>
     <!-- Navbar Ends -->
-    <br>
 
+    <br>
 
     <a class="btn btn-success btn-sm my-0" th:href="@{/admin/movie/list}">Edit Movie List</a>
 
+    <br>
+
     <!-- Search bar -->
     <div class="md-form form-sm my-0">
-        <form class="form-inline my-1" th:action="@{/movie}">
+        <form class="form-inline my-1" th:action="@{/movieAdmin}">
             <label for="movieNameSearch">
                 <input class="form-control form-control-sm mr-sm-2 mb-0" id="movieNameSearch" type="text" name="movieNameKeyword" placeholder="Search by movie name">
             </label>
@@ -80,6 +73,8 @@
             <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
         </form>
     </div>
+
+    <br>
 
     <!-- Table container -->
     <div class="container">
