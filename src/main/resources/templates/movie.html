@@ -97,7 +97,7 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form class="form-inline my-1" th:action="@{/movie/register}" th:object="${user}" method="POST">
+                            <form class="form-inline my-1" th:action="@{/home/register}" th:object="${user}" method="POST">
 
                                 <!-- Add hidden form field to handle update -->
                                 <input type="hidden" th:field="*{id}"/>
