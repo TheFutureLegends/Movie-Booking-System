@@ -83,23 +83,24 @@
                                         <li><a class="dropdown-item" th:href="@{/profile/login/edit(userId = *{id})}"> Edit profile</a></li>
                                       </ul>
                             </div>
-                            <p th:each="tempUser : ${users}">
+                            <div th:each="tempUserProfile : ${userProfiles}">
                                 <span class="profile-real-name">
                                     <b>Real name: </b>
-                                    <b th:text="${tempUser.fullName}"></b>
+                                    <h1 th:text="${tempUserProfile.fullName}"></h1>
                                 <br>
                                     <b>Phone number: </b>
-                                    <b th:text="${tempUser.phone}"></b>
-                                <br>                               
+                                    <h1 th:text="${tempUserProfile.phone}"></h1>
+                                <br>
                                     <b>Email address: </b>
-                                    <b th:text="${tempUser.email}"></b><br>
+                                    <h1 th:text="${tempUserProfile.email}"></h1><br>
                                 <br>
                                     <b>Address: </b>
-                                    <b th:text="${tempUser.address}"></b>
+                                    <h1 th:text="${tempUserProfile.address}"></h1>
 
-                                </span>            
-                            
-                            </p>        
+                                </span>
+
+                            </div>
+
                     </div>
 
                 </div>

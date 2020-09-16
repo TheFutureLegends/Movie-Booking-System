@@ -2,6 +2,7 @@ package learn.thymeleaf.sept.controller;
 
 import learn.thymeleaf.sept.entity.User;
 import learn.thymeleaf.sept.entity.UserProfile;
+import learn.thymeleaf.sept.service.UserProfileService;
 import learn.thymeleaf.sept.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-
+    private final UserProfileService userProfileService;
     private final UserService userService;
-
-    public HomeController(UserService userService) {
+    public HomeController(UserProfileService userProfileService, UserService userService) {
+        this.userProfileService = userProfileService;
         this.userService = userService;
+
     }
 
     @RequestMapping("/index")
@@ -43,11 +45,11 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user) {
+    public String registerUser(@ModelAttribute("user")User user,@ModelAttribute("userProfile") UserProfile userProfile  ) {
 
         // save the user
         userService.create(user);
-
+        userProfileService.create(userProfile);
         // use a redirect to prevent duplicate submissions
         return "redirect:/home/index";
     }

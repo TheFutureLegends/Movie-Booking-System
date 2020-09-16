@@ -95,28 +95,35 @@
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <form class="form-inline my-1" th:action="@{/home/register}" th:object="${user}" th:object ="${userProfile}" method="POST">
+                    <div class="modal-body" >
+                        <form class="form-inline my-1" th:action="@{/home/register}"  method="POST">
 
                             <!-- Add hidden form field to handle update -->
-                            <input type="hidden" th:field="*{user.id}"/>
+                            <div th:object="${user}">
+                                <input type="hidden" th:field="*{id}"/>
 
-                            <input type="text" th:field="*{user.userName}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="User Name">
+                                <input type="text" th:field="*{userName}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="User Name">
 
-                            <input type="text" th:field="*{user.password}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Password">
+                                <input type="text" th:field="*{password}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Password">
+                                <input type="hidden" th:field="*{role}" placeholder="Role">
+                            </div>
 
-                            <input type="text" th:field="*{userProfile.fullName}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Full Name">
-                            <input type="text" th:field="*{userProfile.phone}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Phone Number">
-                            <input type="text" th:field="*{userProfile.email}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Email Address">
-                            <input type="text" th:field="*{userProfile.address}"
-                                   class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Address">
+                            <div th:object="${userProfile}">
+                                <input type="hidden" th:field="*{id}">
+                                <input type="text" th:field="*{fullName}"
+                                        class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Full Name">
+                                <input type="text" th:field="*{phone}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Phone Number">
+                                <input type="text" th:field="*{email}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Email Address">
+                                <input type="text" th:field="*{address}"
+                                       class="form-control form-control-sm mr-sm-2 mb-0" placeholder="Address">
+                            </div>
 
-                            <input type="hidden" th:field="*{role}" placeholder="Role">
+
+
 
                             <button type="submit" class="btn btn-success btn-sm my-0">Register</button>
 
