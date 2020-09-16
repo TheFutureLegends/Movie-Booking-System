@@ -45,13 +45,13 @@ public class UserController {
                         return "homepage-log-in";
                     }
                 } else {
-                    return "index";
+                    return "redirect:/home/index";
                 }
             }
             i++;
             userList.next();
         }
-        return "index";
+        return "redirect:/home/index";
     }
 
 }

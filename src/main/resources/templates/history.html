@@ -35,16 +35,6 @@
             </li>
         </ul>
 
-        <!-- Search bar -->
-        <div class="md-form form-sm my-0">
-            <form class="form-inline my-1" th:action="@{/history/login(userId = *{id})}">
-                <label for="txtSearch">
-                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by history name">
-                </label>
-                <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
-            </form>
-        </div>
-
         <!-- User Account -->
         <ul class="nav">
             <li class="nav-item dropdown">
@@ -60,6 +50,18 @@
         </ul>
     </nav>
     <!-- Navbar Ends -->
+    <br>
+
+    <!-- Search bar -->
+    <div class="md-form form-sm my-0">
+        <form class="form-inline my-1" th:action="@{/history/login(userId = *{id})}">
+            <label for="txtSearch">
+                <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by history name">
+            </label>
+            <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+        </form>
+    </div>
+
     <br>
 
     <!-- Table container -->
@@ -84,9 +86,9 @@
                     <!-- update functions -->
                     <td>
                         <a class="btn btn-danger"
-                           onclick="if (!(confirm('Are you sure want to delete this reservation ???'))) return false"
+                           onclick="if (!(confirm('Are you sure want to refund this reservation ???'))) return false"
                            th:href="@{/history/delete(reservationId = ${tempReservation.id}, userId = *{id})}">
-                            Delete
+                            Refund
                         </a>
                     </td>
                 </tr>
