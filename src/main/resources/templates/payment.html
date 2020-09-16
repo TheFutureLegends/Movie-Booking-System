@@ -113,7 +113,7 @@
                             <div id="paypal" class="tab-pane fade pt-3">
                                 <h6 class="pb-2">Select your paypal account type</h6>
                                 <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
-                                <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
+                                <p> <a class="btn btn-primary" th:href="@{/payment/save(userId = ${user.id}, movieName = *{movieName})}"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</a> </p>
                                 <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
                             <!-- Paypal end -->
@@ -136,7 +136,7 @@
                                         <option>Bank 10</option>
                                     </select> </div>
                                 <div class="form-group">
-                                    <p> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#paymentConfirmation"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p>
+                                    <p> <a class="btn btn-primary" th:href="@{/payment/save(userId = ${user.id}, movieName = *{movieName})}"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</a> </p>
                                 </div>
                                 <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
@@ -148,26 +148,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal for payment confirmation starts -->
-    <div class="modal fade" id="paymentConfirmation">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h3 class="modal-title">Thank you for the purchase</h3>
-                    <button th:onclick="'window.location.href = \'' + @{/home/login(userId = *{id})} + '\''" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <a th:href="@{/home/login(userId = *{id})}" data-dismiss="modal" class="btn btn-primary"><b>Proceed</b></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal for payment confirmation ends -->
 
         <br>
 
