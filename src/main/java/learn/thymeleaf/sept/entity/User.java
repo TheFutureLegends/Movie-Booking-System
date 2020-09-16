@@ -18,9 +18,9 @@ public class User{
     @Column(name="role")
     private String role;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "u_profile_id")
-    private UserProfile userProfile;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "u_profile_id")
+//    private UserProfile userProfile;
 
 
     //Constructors
@@ -30,7 +30,7 @@ public class User{
         this.userName = userName;
         this.password = password;
         this.role = role;
-        this.userProfile = userProfile;
+//        this.userProfile = userProfile;
     }
 
     //Getters
@@ -43,9 +43,9 @@ public class User{
     public String getPassword() { return password; }
     public String getRole() { return role; }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
+//    public UserProfile getUserProfile() {
+//        return userProfile;
+//    }
 
     //Setters
     public void setId(int id) { this.id = id; }
@@ -53,9 +53,9 @@ public class User{
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
+//    public void setUserProfile(UserProfile userProfile) {
+//        this.userProfile = userProfile;
+//    }
 
     //toString
     @Override

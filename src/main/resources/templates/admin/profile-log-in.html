@@ -17,24 +17,31 @@
     <div class="container" style="margin-top:30px" th:object="${user}">
         <!-- Navbar and main content -->
         <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
-            <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
+            <a class="navbar-brand" th:href="@{/home/admin(userId = *{id})}">
                 <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
                      style="width:60px;">
             </a>
             <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
+=======
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/admin(userId = *{id})}">Movies</a>
+>>>>>>> 4254993db6e678260933925d3c8272458d767ce3
                 </li>
             </ul>
 
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
+=======
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/admin(userId = *{id})}">Theaters</a>
+>>>>>>> 4254993db6e678260933925d3c8272458d767ce3
                 </li>
             </ul>
-
 
             <div class="md-form form-sm my-0">
                 <form class="form-inline my-1">
@@ -49,15 +56,21 @@
             <ul class="nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
-                       data-toggle="dropdown" th:text="*{userName}">
-                    </a>
+                       data-toggle="dropdown" th:text="*{userName}"> </a>
                     <div class="dropdown-menu">
+<<<<<<< HEAD
                         <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
                         <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
+=======
+                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/history/admin(userId = *{id})}">History</a>
+                        <a class="dropdown-item" th:href="@{/admin/user/list}">Add Manager</a>
+>>>>>>> 4254993db6e678260933925d3c8272458d767ce3
                         <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>
                 </li>
             </ul>
+
         </nav>
         <!-- Navbar Ends -->
         <br>

@@ -6,6 +6,7 @@ import learn.thymeleaf.sept.service.ReservationService;
 import learn.thymeleaf.sept.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,5 +43,34 @@ public class HistoryController {
         return "history";
     }
 
+    @RequestMapping("/admin")
+    public String adminLogin(@RequestParam("userId")int theId, Model userModel, Model theModel, String keyword){
+        User user = userService.findById(theId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        // get employees from db
+        List<Reservation> reservations = reservationService.findAll();
+        // check if there is a search keyword
+        if(keyword != null){
+            theModel.addAttribute("reservations", reservationService.findByReservationName(keyword));
+        }
+        else {
+            // add to the spring model
+            theModel.addAttribute("reservations", reservations);
+        }
+
+        return "admin/history";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("reservationId")int theId, @RequestParam("userId")int userId, Model userModel){
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        //get the employee
+        reservationService.deleteById(theId);
+
+        return "homepage-log-in";
+    }
 
 }
