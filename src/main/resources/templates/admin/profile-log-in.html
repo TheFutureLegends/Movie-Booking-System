@@ -24,14 +24,14 @@
             <!-- Movies Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
                 </li>
             </ul>
 
             <!-- Theaters Link -->
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
                 </li>
             </ul>
 
@@ -52,7 +52,7 @@
                        data-toggle="dropdown" th:text="*{userName}">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
                         <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
                         <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
                     </div>
