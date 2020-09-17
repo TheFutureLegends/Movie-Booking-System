@@ -92,7 +92,7 @@
                 <td>
                     <a class="btn btn-danger"
                        onclick="if (!(confirm('Are you sure want to refund this reservation ???'))) return false"
-                       th:href="@{/history/delete(reservationId = ${tempReservation.id})}">
+                       th:href="@{/history/deleteAdmin(reservationId = ${tempReservation.id}, userId = *{id})}">
                         Refund
                     </a>
                 </td>

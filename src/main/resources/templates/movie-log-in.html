@@ -93,7 +93,7 @@
                                         </button>
                                     </div>
                                     <div th:case="*">
-                                        <a type="button" class="btn btn-outline-primary" th:href="@{/payment/payment(movieId = ${tempMovie.id}, userId = *{id})}">
+                                        <a type="button" class="btn btn-outline-primary" th:href="@{/payment/user(movieId = ${tempMovie.id}, userId = *{id})}">
                                             Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
                                             Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
                                         </a>

@@ -113,8 +113,8 @@ public class HistoryController {
         return "admin/history";
     }
 
-    @GetMapping("/delete")
-    public String delete(@RequestParam("reservationId")int theId, @RequestParam("userId")int userId, Model userModel){
+    @GetMapping("/deleteUser")
+    public String deleteUser(@RequestParam("reservationId")int theId, @RequestParam("userId")int userId, Model userModel){
         User user = userService.findById(userId);
         Model theUserModel = userModel.addAttribute("user", user);
 
@@ -122,6 +122,17 @@ public class HistoryController {
         reservationService.deleteById(theId);
 
         return "homepage-log-in";
+    }
+
+    @GetMapping("/deleteAdmin")
+    public String deleteAdmin(@RequestParam("reservationId")int theId, @RequestParam("userId")int userId, Model userModel){
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        //get the employee
+        reservationService.deleteById(theId);
+
+        return "admin/homepage-log-in";
     }
 
 }

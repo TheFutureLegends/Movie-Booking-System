@@ -70,7 +70,7 @@
                             <!-- Credit card -->
                             <div class="tab-content">
                                 <div id="credit-card" class="tab-pane fade show active pt-3">
-                                    <form role="form" th:action="@{/payment/creditCard}">
+                                    <form role="form" th:action="@{/payment/userCreditCard}">
                                         <div class="form-group"> <label>
                                                 <h6>Card Owner</h6>
                                             </label> <label for="userNameSearch">
@@ -114,7 +114,7 @@
                             <div id="paypal" class="tab-pane fade pt-3">
                                 <h6 class="pb-2">Select your paypal account type</h6>
                                 <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
-                                <p> <a class="btn btn-primary" th:href="@{/payment/save(userId = ${user.id}, movieName = *{movieName})}"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</a> </p>
+                                <p> <a class="btn btn-primary" th:href="@{/payment/userSave(userId = ${user.id}, movieName = *{movieName})}"><i class="fab fa-paypal mr-2"></i> Log into my Paypal</a> </p>
                                 <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
                             <!-- Paypal end -->
@@ -136,7 +136,7 @@
                                         <option>Bank 10</option>
                                     </select> </div>
                                 <div class="form-group">
-                                    <p> <a class="btn btn-primary" th:href="@{/payment/save(userId = ${user.id}, movieName = *{movieName})}"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</a> </p>
+                                    <p> <a class="btn btn-primary" th:href="@{/payment/userSave(userId = ${user.id}, movieName = *{movieName})}"><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</a> </p>
                                 </div>
                                 <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
                             </div> 
