@@ -51,7 +51,7 @@
                 <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
                    data-toggle="dropdown" th:text="*{userName}"> </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                    <a class="dropdown-item" th:href="@{/profile/admin(userId = *{id})}">Profile</a>
                     <a class="dropdown-item" th:href="@{/history/admin(userId = *{id})}">History</a>
                     <a class="dropdown-item" th:href="@{/admin/user/list}">Add Manager</a>
                     <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
@@ -65,7 +65,7 @@
 
 <!-- Profile page-->
     <section id="profile-page">
-    <div class="container rounded bg-white mt-5 mb-5" th:action="@{/home/register}" th:object="${user}">
+    <div class="container rounded bg-white mt-5 mb-5" th:action="@{/home/register}">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span class="font-weight-bold">Amelly</span><span class="text-black-50">amelly12@bbb.com</span><span> </span></div>
@@ -75,16 +75,17 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    <div class="row mt-3">
-                        <input type="hidden" th:field="*{id}"/>
+                    <div class="row mt-3" th:action="@{admin/user_profile/save}"
+                         th:object="${userProfile}" method="POST">
+                            <input type="hidden" th:field="*{id}"/>
                         <div class="col-md-12"><label class="labels">Full Name</label>
-                            <input type="text" class="form-control" placeholder="enter full name" value=""  th:field="*{fullName}"></div>
+                            <input type="text" class="form-control" placeholder="enter full name" th:field="*{fullName}"></div>
                         <div class="col-md-12"><label class="labels">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="enter phone number" value="" th:field="*{phone}"></div>
+                            <input type="text" class="form-control" placeholder="enter phone number" th:field="*{phone}"></div>
                         <div class="col-md-12"><label class="labels">Email Address</label>
-                            <input type="text" class="form-control" placeholder="enter email address" value="" th:field="*{email}"></div>
+                            <input type="text" class="form-control" placeholder="enter email address"th:field="*{email}" ></div>
                         <div class="col-md-12"><label class="labels">Address</label>
-                            <input type="text" class="form-control" placeholder="enter address" value="" th:field="*{address}"></div>
+                            <input type="text" class="form-control" placeholder="enter address"th:field="*{address}" ></div>
                     </div>
                     <div class="mt-5 text-center">
                         <button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
