@@ -53,7 +53,6 @@
         <br>
 
         <!-- Search bar -->
-
         <div class="md-form form-sm my-0">
             <form class="form-inline my-1" th:action="@{/movieLogin}">
                 <label for="movieNameSearch">
@@ -62,10 +61,10 @@
                 <label for="categorySearch">
                     <input class="form-control form-control-sm mr-sm-2 mb-0" id="categorySearch" type="text" name="categoryKeyword" placeholder="Search by category">
                 </label>
-                <label for="ratedSearch">
+                <label for="ratedSearch"> Maximum age:
                     <input class="form-control form-control-sm mr-sm-2 mb-0" id="ratedSearch" type="number" value="0" name="ratedKeyword" placeholder="Search by maximum rating">
                 </label>
-                <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+                <button class="btn btn-success btn-sm my-0" type="submit" th:name="userId" th:value="*{id}">Search</button>
             </form>
         </div>
 

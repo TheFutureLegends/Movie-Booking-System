@@ -43,9 +43,60 @@ public class HistoryController {
         return "history";
     }
 
+    @RequestMapping("/loginSearch")
+    public String loginSearch(Integer userId, Model userModel, Model theModel, String keyword){
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        // get employees from db
+        List<Reservation> reservations = reservationService.findAll();
+        // check if there is a search keyword
+        if(keyword != null){
+            theModel.addAttribute("reservations", reservationService.findByReservationName(keyword));
+        }
+        else {
+            // add to the spring model
+            theModel.addAttribute("reservations", reservations);
+        }
+
+        return "history";
+    }
+
+
     @RequestMapping("/admin")
     public String adminLogin(@RequestParam("userId")int theId, Model userModel, Model theModel, String keyword){
         User user = userService.findById(theId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        // get employees from db
+        List<Reservation> reservations = reservationService.findAll();
+        // check if there is a search keyword
+        if(keyword != null){
+            theModel.addAttribute("reservations", reservationService.findByReservationName(keyword));
+        }
+        else {
+            // add to the spring model
+            theModel.addAttribute("reservations", reservations);
+        }
+
+        return "admin/history";
+    }
+
+    @RequestMapping("/adminSearch")
+    public String adminLoginSearch(Integer userId, Model userModel, Model theModel, String keyword){
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
         Model theUserModel = userModel.addAttribute("user", user);
 
         // get employees from db
