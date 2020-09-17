@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -39,7 +42,10 @@ public class PaymentController {
     }
 
     @RequestMapping("/save")
-    public String saveReservation(@RequestParam("userId")int userId, Model userModel, Model theModel, @RequestParam("movieName")String movieName) {
+    public String saveReservation(@RequestParam("userId")int userId, Model userModel, Model theModel, @RequestParam("movieName")String movieName, HttpServletResponse response) throws IOException {
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
         List<Movie> movie = movieService.findByMovieName(movieName);
         User user = userService.findById(userId);
@@ -55,6 +61,54 @@ public class PaymentController {
 
         theModel.addAttribute("reservations", reservations);
 
+        out.println("<script>alert('Reservation successful. Thank you for using our service.'); location.href='/home/index';</script>");
+        out.flush();
+
         return "history";
+    }
+
+    @RequestMapping("/creditCard")
+    public String creditCardReservation(@RequestParam("userId")int userId, Model userModel, Model theModel, @RequestParam("movieName")String movieName, HttpServletResponse response, String userNameKeyword, String cardNumberKeyword, Integer monthKeyword, Integer yearKeyword, String cvvKeyword) throws IOException {
+
+        if (monthKeyword == null) {
+            monthKeyword = 0;
+        } else {
+            monthKeyword.intValue();
+        }
+        if (yearKeyword == null) {
+            yearKeyword = 0;
+        } else {
+            yearKeyword.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        if (userNameKeyword != null && cardNumberKeyword != null && monthKeyword == 0 && yearKeyword == 0 && cvvKeyword != null) {
+            List<Movie> movie = movieService.findByMovieName(movieName);
+
+            Reservation reservation = new Reservation(movie.get(0).getMovieName(), movie.get(0).getMovieStartTime(), "Good");
+
+            // save the employee
+            reservationService.create(reservation);
+
+            // get employees from db
+            List<Reservation> reservations = reservationService.findAll();
+
+            theModel.addAttribute("reservations", reservations);
+
+            out.println("<script>alert('Reservation successful. Thank you for using our service.');</script>");
+            out.flush();
+
+            return "history";
+        } else {
+            out.println("<script>alert('Reservation failed. Please check payment information');</script>");
+            out.flush();
+
+            return "homepage-log-in";
+        }
     }
 }
