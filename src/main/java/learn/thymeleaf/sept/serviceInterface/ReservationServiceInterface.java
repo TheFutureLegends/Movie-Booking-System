@@ -1,6 +1,5 @@
 package learn.thymeleaf.sept.serviceInterface;
 
-import learn.thymeleaf.sept.entity.Movie;
 import learn.thymeleaf.sept.entity.Reservation;
 
 import java.util.List;
