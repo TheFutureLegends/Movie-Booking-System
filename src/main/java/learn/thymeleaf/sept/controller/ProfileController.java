@@ -45,25 +45,46 @@ public class ProfileController {
         return "profile-edit";
     }
 
-    @GetMapping("/showFormForAdd")
-    public String showFormForAdd(Model theModel) {
-
-        // create model attribute to bind form data
-        UserProfile userProfile = new UserProfile();
-
+    @GetMapping("/admin/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("userProfileId")int theId, Model theModel){
+        //get the user from service
+        UserProfile userProfile = userProfileService.findById(theId);
+        //set the user as a model attribute to pre-populate the form
         theModel.addAttribute("userProfile", userProfile);
-
+        // send over to our form
         return "admin/user_profile/add-update-form";
+    }
+    @GetMapping("/admin/edit")
+    public String editAdmin(@RequestParam("userProfileId")int theId, Model theModel, Model userModel){
+        User user = userService.findById(theId);
+        Model theUserModel = userModel.addAttribute("user", user);
+        //get the user from service
+        UserProfile userProfile = userProfileService.findById(theId);
+        //set the user as a model attribute to pre-populate the form
+        theModel.addAttribute("userProfile", userProfile);
+        // send over to our form
+        return "admin/profile-edit";
     }
 
     @PostMapping("/save")
-    public String saveProfile(@ModelAttribute("userProfile") UserProfile profile) {
+    public String saveProfile(@ModelAttribute("userProfile") UserProfile profile, Integer userId, Model userModel, Model userProfileModel) {
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
 
         // save the employee
         userProfileService.create(profile);
 
+        UserProfile userProfile = userProfileService.findById(userId);
+        Model theUserProfileModel = userProfileModel.addAttribute("userProfile", userProfile);
+
         // use a redirect to prevent duplicate submissions
-        return "redirect:/profile/login";
+        return "/admin/profile-log-in";
     }
 
 }
