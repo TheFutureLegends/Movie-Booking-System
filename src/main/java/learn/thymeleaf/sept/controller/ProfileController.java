@@ -19,23 +19,29 @@ public class ProfileController {
         this.userProfileService = userProfileService;
     }
     @RequestMapping("/login")
-    public String menu(@RequestParam("userId")int theId, Model userModel){
+    public String menu(@RequestParam("userId")int theId, Model userModel,Model userProfileModel ){
         User user = userService.findById(theId);
+        UserProfile userProfile = userProfileService.findById(theId);
         Model theUserModel = userModel.addAttribute("user", user);
+        Model theUserProfileModel = userProfileModel.addAttribute("userProfile",userProfile);
         return "profile-log-in";
     }
 
     @RequestMapping("/admin")
-    public String admin(@RequestParam("userId")int theId, Model userModel){
+    public String admin(@RequestParam("userId")int theId, Model userModel, Model userProfileModel){
         User user = userService.findById(theId);
+        UserProfile userProfile = userProfileService.findById(theId);
         Model theUserModel = userModel.addAttribute("user", user);
+        Model theUserProfileModel = userProfileModel.addAttribute("userProfile",userProfile);
+
         return "admin/profile-log-in";
     }
     @RequestMapping("/login/edit")
     public String edit(@RequestParam("userId")int theId, Model userModel, Model userProfileModel){
         User user = userService.findById(theId);
+        UserProfile userProfile = userProfileService.findById(theId);
         Model theUserModel = userModel.addAttribute("user", user);
-        Model theUserProfileModel = userProfileModel.addAttribute("userProfile", user);
+        Model theUserProfileModel = userProfileModel.addAttribute("userProfile", userProfile);
         return "profile-edit";
     }
 
