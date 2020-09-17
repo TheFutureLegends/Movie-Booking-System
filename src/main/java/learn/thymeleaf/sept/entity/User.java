@@ -42,7 +42,7 @@ public class User{
     }
     public String getPassword() { return password; }
     public String getRole() { return role; }
-
+//
 //    public UserProfile getUserProfile() {
 //        return userProfile;
 //    }

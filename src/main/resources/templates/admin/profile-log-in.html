@@ -68,37 +68,41 @@
                     <div class="profile-image">
                             <img th:src="@{/images/logo.jpg}" class="img" alt="Profile" width="304" height="236; ">
                     </div>
-                          <br>
-                    <div><button class="profile_image_button" type="button">Upload Profile Image</button>
+                    <br>
                     </div>
+
                     <div class="profile col-md-8 col-sm-8">
-                            <h1 class="profile">janedoe_</h1>
+                            <h1 class="profile" th:text="*{userName}"></h1>
                             
                             <div>
                                 
                                 <button class="dropdown btn_profile button-primary dropdown-toggle btn-sm my-0 btn-danger" type="button" data-toggle="dropdown" value="Edit profile">
                                     <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" th:href="@{/profile/admin/edit(userId = *{id})}"> Edit profile</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/profile/admin/user_profile/add-update-form(userId = *{id})}"> Edit profile</a></li>
                                       </ul>
                             </div>
-                            <p th:each="tempUserProfile : ${userProfile}">
-                                <span class="profile-real-name">
-                                    <b>Real name: </b>
-                                    <b th:text="${tempUser.fullName}"></b>
-                                <br>
-                                    <b>Phone number: </b>
-                                    <b th:text="${tempUser.phone}"></b>
-                                <br>                               
-                                    <b>Email address: </b>
-                                    <b th:text="${tempUser.email}"></b><br>
-                                <br>
-                                    <b>Address: </b>
-                                    <b th:text="${tempUser.address}"></b>
+                            <div th:object="${userProfile}">
 
-                                </span>            
-                            
-                            </p>        
+                                <p>
+                                    <span class="profile-real-name">
+                                        <b>Real name: </b>
+                                        <h2 th:text="*{fullName}"></h2>
+                                    <br>
+                                        <b>Phone number: </b>
+                                        <h2 th:text="*{phone}"></h2>
+                                    <br>
+                                        <b>Email address: </b>
+                                        <h2 th:text="*{email}"></h2><br>
+                                    <br>
+                                        <b>Address: </b>
+                                        <h2 th:text="*{address}"></h2>
+
+                                    </span>
+
+                                </p>
+                            </div>
+
                     </div>
 
                 </div>
