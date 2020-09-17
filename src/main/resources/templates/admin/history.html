@@ -41,7 +41,7 @@
                 <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
                    data-toggle="dropdown" th:text="*{userName}"> </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                    <a class="dropdown-item" th:href="@{/profile/admin(userId = *{id})}">Profile</a>
                     <a class="dropdown-item" th:href="@{/history/admin(userId = *{id})}">History</a>
                     <a class="dropdown-item" th:href="@{/admin/user/list}">Add Manager</a>
                     <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>

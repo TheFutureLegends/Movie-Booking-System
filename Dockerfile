@@ -1,6 +1,13 @@
-FROM openjdk:16-alpine
+FROM maven:3.6.3-jdk-8-slim
 WORKDIR /app
 COPY . ./
-ENV JAVA_HOME /opt/openjdk-16
+
+ENV JAVA_HOME /usr/local/openjdk-8
+ENV MAVEN_HOME /usr/share/maven
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "target/sept-0.0.1-SNAPSHOT.jar"]
+
+RUN mvn clean
+RUN mvn install -DskipTests
+RUN mvn test
+
+ENTRYPOINT ["mvn", "spring-boot:run"]
