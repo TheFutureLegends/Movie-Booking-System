@@ -3,7 +3,6 @@ sudo: required
 services:
   - docker
 before_install:
-  # - docker build -t minhpro332/movie-booking .
   - mvn clean
   - mvn install -DskipTests
   - mvn test
@@ -22,10 +21,5 @@ deploy:
   bucket_name: elasticbeanstalk-ap-southeast-1-792974750178
   on:
     all_branches: true
-    # branch:
-    # - dockerized
-    # - Phuoc
-    # - master
-    # - develop
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
