@@ -1,9 +1,7 @@
 package learn.thymeleaf.sept.service;
 
 import learn.thymeleaf.sept.entity.Movie;
-import learn.thymeleaf.sept.entity.User;
 import learn.thymeleaf.sept.repositories.MovieRepository;
-import learn.thymeleaf.sept.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

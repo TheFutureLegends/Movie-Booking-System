@@ -1,3 +1,6 @@
+create database movie_booking;
+use movie_booking;
+
 create table movie_booking.user
 (
     id        int auto_increment
