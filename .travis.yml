@@ -3,11 +3,8 @@ sudo: required
 services:
   - docker
 before_install:
-  - mvn clean
-  - mvn install -DskipTests
-  - mvn test
-script:
   - docker build -t minhpro332/movie-booking .
+script:
   - docker run -d -p 8080:8080 minhpro332/movie-booking
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
