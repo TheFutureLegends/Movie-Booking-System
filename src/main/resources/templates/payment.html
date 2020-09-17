@@ -100,10 +100,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" class="form-control" th:name="movieName" th:value="*{movieName}">
                                         <div class="card-footer">
-                                            <a
-                                                class="subscribe btn btn-primary btn-block shadow-sm" th:href="@{/payment/creditCard(userId = ${user.id}, movieName = *{movieName})}"> Confirm Payment
-                                            </a>
+                                            <button
+                                                class="subscribe btn btn-primary btn-block shadow-sm" type="submit" th:name="userId" th:value="${user.id}"> Confirm Payment
+                                            </button>
                                         </div>    
                                     </form>
                                 </div>

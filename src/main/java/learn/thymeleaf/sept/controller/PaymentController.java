@@ -61,14 +61,14 @@ public class PaymentController {
 
         theModel.addAttribute("reservations", reservations);
 
-        out.println("<script>alert('Reservation successful. Thank you for using our service.'); location.href='/home/index';</script>");
+        out.println("<script>alert('Reservation successful. Thank you for using our service.');</script>");
         out.flush();
 
         return "history";
     }
 
     @RequestMapping("/creditCard")
-    public String creditCardReservation(@RequestParam("userId")int userId, Model userModel, Model theModel, @RequestParam("movieName")String movieName, HttpServletResponse response, String userNameKeyword, String cardNumberKeyword, Integer monthKeyword, Integer yearKeyword, String cvvKeyword) throws IOException {
+    public String creditCardReservation(Integer userId, Model userModel, Model theModel, String movieName, HttpServletResponse response, String userNameKeyword, String cardNumberKeyword, Integer monthKeyword, Integer yearKeyword, String cvvKeyword) throws IOException {
 
         if (monthKeyword == null) {
             monthKeyword = 0;
@@ -80,6 +80,11 @@ public class PaymentController {
         } else {
             yearKeyword.intValue();
         }
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
 
         User user = userService.findById(userId);
         Model theUserModel = userModel.addAttribute("user", user);
@@ -87,7 +92,7 @@ public class PaymentController {
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        if (userNameKeyword != null && cardNumberKeyword != null && monthKeyword == 0 && yearKeyword == 0 && cvvKeyword != null) {
+        if (userNameKeyword != null && cardNumberKeyword != null && monthKeyword != 0 && yearKeyword != 0 && cvvKeyword != null) {
             List<Movie> movie = movieService.findByMovieName(movieName);
 
             Reservation reservation = new Reservation(movie.get(0).getMovieName(), movie.get(0).getMovieStartTime(), "Good");

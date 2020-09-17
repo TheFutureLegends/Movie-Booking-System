@@ -57,7 +57,17 @@ public class MovieController {
 
     // Search function for membership
     @RequestMapping("/movieLogin")
-    public String menuLogin(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+    public String menuLogin(Integer userId, Model userModel, Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
         if (ratedKeyword == null) {
             ratedKeyword = 0;
         } else {
@@ -86,7 +96,16 @@ public class MovieController {
 
     // Search function for admin
     @RequestMapping("/movieAdmin")
-    public String menuAdmin(Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+    public String menuAdmin(Integer userId, Model userModel, Model model, String movieNameKeyword, String categoryKeyword, Integer ratedKeyword){
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
         if (ratedKeyword == null) {
             ratedKeyword = 0;
         } else {
