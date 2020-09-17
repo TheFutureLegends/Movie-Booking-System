@@ -43,7 +43,7 @@
                 Your Acount
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
                 <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
                 <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
             </div>
@@ -55,10 +55,9 @@
 
 <!-- Profile page-->
     <section id="profile-page">
-    <div class="container rounded bg-white mt-5 mb-5" th:action="@{/home/register}" th:object="${user}">
+    <div class="container rounded bg-white mt-5 mb-5" th:action="@{/home/register}">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span class="font-weight-bold">Amelly</span><span class="text-black-50">amelly12@bbb.com</span><span> </span></div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -66,18 +65,30 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-3">
-                        <input type="hidden" th:field="*{id}"/>
-                        <div class="col-md-12"><label class="labels">Full Name</label>
-                            <input type="text" class="form-control" placeholder="enter full name"  th:field="*{fullName}"></div>
-                        <div class="col-md-12"><label class="labels">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="enter phone number"  th:field="*{phone}"></div>
-                        <div class="col-md-12"><label class="labels">Email Address</label>
-                            <input type="text" class="form-control" placeholder="enter email address" th:field="*{email}"></div>
-                        <div class="col-md-12"><label class="labels">Address</label>
-                            <input type="text" class="form-control" placeholder="enter address" th:field="*{address}"></div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                        <hr>
+
+                        <form action="#" th:action="@{/profile/saveUser}"
+                              th:object="${userProfile}" method="POST">
+
+                            <!-- Add hidden form field to handle update -->
+                            <input type="hidden" th:field="*{id}"/>
+                            <div class="col-md-12"><label class="labels">Full Name</label>
+                                <input type="text" th:field="*{fullName}"
+                                       class="form-control " placeholder="Full Name"></div>
+                            <div class="col-md-12"><label class="labels">Phone Number</label>
+                                <input type="text" th:field="*{phone}"
+                                       class="form-control " placeholder="Phone Number"></div>
+                            <div class="col-md-12"><label class="labels">Email Address</label>
+                                <input type="text" th:field="*{email}"
+                                       class="form-control " placeholder="Email"></div>
+                            <div class="col-md-12"><label class="labels">Address</label>
+                                <input type="text" th:field="*{address}"
+                                       class="form-control " placeholder="Address"></div>
+                            <div class="mt-5 text-center">
+                                <button type="submit" th:name="userId" th:value="${user.id}"class="btn btn-info" >Save</button></div>
+                        </form>
+
+                        <a th:href="@{/profile/login(userId = *{id})}">Back to Profile</a>
                 </div>
             </div>
         </div>

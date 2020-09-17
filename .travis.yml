@@ -21,8 +21,12 @@ deploy:
   app: movie-booking
   env: MovieBooking-env-1
   bucket_name: elasticbeanstalk-ap-southeast-1-792974750178
-  # bucket_path: movie-booking
+#  bucket_path: movie-booking
   on:
-    branch: dockerized
+    branch:
+    - dockerized
+    - Phuoc
+    - master
+    - develop
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY

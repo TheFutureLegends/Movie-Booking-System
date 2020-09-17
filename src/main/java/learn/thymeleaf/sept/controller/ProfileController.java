@@ -36,24 +36,19 @@ public class ProfileController {
 
         return "admin/profile-log-in";
     }
-    @RequestMapping("/login/edit")
-    public String edit(@RequestParam("userId")int theId, Model userModel, Model userProfileModel){
+    @GetMapping("/edit")
+    public String editUser(@RequestParam("userProfileId")int theId, Model theModel, Model userModel){
         User user = userService.findById(theId);
-        UserProfile userProfile = userProfileService.findById(theId);
         Model theUserModel = userModel.addAttribute("user", user);
-        Model theUserProfileModel = userProfileModel.addAttribute("userProfile", userProfile);
-        return "profile-edit";
-    }
-
-    @GetMapping("/admin/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("userProfileId")int theId, Model theModel){
         //get the user from service
         UserProfile userProfile = userProfileService.findById(theId);
         //set the user as a model attribute to pre-populate the form
         theModel.addAttribute("userProfile", userProfile);
         // send over to our form
-        return "admin/user_profile/add-update-form";
+        return "/profile-edit";
     }
+
+
     @GetMapping("/admin/edit")
     public String editAdmin(@RequestParam("userProfileId")int theId, Model theModel, Model userModel){
         User user = userService.findById(theId);
@@ -85,6 +80,26 @@ public class ProfileController {
 
         // use a redirect to prevent duplicate submissions
         return "/admin/profile-log-in";
+    }
+    @PostMapping("/saveUser")
+    public String saveUserProfile(@ModelAttribute("userProfile") UserProfile profile, Integer userId, Model userModel, Model userProfileModel) {
+        if (userId == null) {
+            userId = 0;
+        } else {
+            userId.intValue();
+        }
+
+        User user = userService.findById(userId);
+        Model theUserModel = userModel.addAttribute("user", user);
+
+        // save the employee
+        userProfileService.create(profile);
+
+        UserProfile userProfile = userProfileService.findById(userId);
+        Model theUserProfileModel = userProfileModel.addAttribute("userProfile", userProfile);
+
+        // use a redirect to prevent duplicate submissions
+        return "/profile-log-in";
     }
 
 }
