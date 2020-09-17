@@ -3,8 +3,12 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t minhpro332/movie-booking .
+  # - docker build -t minhpro332/movie-booking .
+  - mvn clean
+  - mvn install -DskipTests
+  - mvn test
 script:
+  - docker build -t minhpro332/movie-booking .
   - docker run -d -p 8080:8080 minhpro332/movie-booking
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -17,10 +21,11 @@ deploy:
   env: MovieBooking-env-1
   bucket_name: elasticbeanstalk-ap-southeast-1-792974750178
   on:
-    branch:
-    - dockerized
-    - Phuoc
-    - master
-    - develop
+    all_branches: true
+    # branch:
+    # - dockerized
+    # - Phuoc
+    # - master
+    # - develop
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
