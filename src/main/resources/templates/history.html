@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css">
+    <title>Movie</title>
+</head>
+
+<body>
+
+<div class="container" style="margin-top:30px" th:object="${user}">
+    <!-- Navbar and main content -->
+    <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;" >
+        <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
+            <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
+                 style="width:60px;">
+        </a>
+        <!-- Movies Link -->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
+            </li>
+        </ul>
+
+        <!-- Theaters Link -->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
+            </li>
+        </ul>
+
+        <!-- User Account -->
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
+                   data-toggle="dropdown" th:text="*{userName}">
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
+                    <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
+                    <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Navbar Ends -->
+    <br>
+
+    <!-- Search bar -->
+    <div class="md-form form-sm my-0">
+        <form class="form-inline my-1" th:action="@{/history/loginSearch}">
+            <label for="txtSearch">
+                <input class="form-control form-control-sm mr-sm-2 mb-0" id="txtSearch" type="text" name="keyword" placeholder="Search by history name">
+            </label>
+            <button class="btn btn-success btn-sm my-0" type="submit" th:name="userId" th:value="*{id}">Search</button>
+        </form>
+    </div>
+
+    <br>
+
+    <!-- Table container -->
+    <div class="container">
+        <!-- List of Movie -->
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Reservation</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="tempReservation : ${reservations}">
+                    <td th:text="${tempReservation.name}"></td>
+                    <td th:text="${tempReservation.dateTime}"></td>
+                    <td th:text="${tempReservation.status}"></td>
+
+                    <!-- update functions -->
+                    <td>
+                        <a class="btn btn-danger"
+                           onclick="if (!(confirm('Are you sure want to refund this reservation ???'))) return false"
+                           th:href="@{/history/deleteUser(reservationId = ${tempReservation.id}, userId = *{id})}">
+                            Refund
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+    <div class="containerr text-center text-md">
+
+        <div class="row">
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase" style= "color: tomato;">Cinema Vietnam</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="about-log-in.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#!">e-CGV</a>
+                    </li>
+                    <li>
+                        <a href="#!">Gift Card</a>
+                    </li>
+                    <li>
+                        <a href="#!">Career</a>
+                    </li>
+                    <li>
+                        <a href="#!">Contact CGV</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Footer -->
+            <footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+                <div class="containerr text-center text-md">
+
+                    <div class="row">
+                        <div class="col-md-3 mb-md-0 mb-3">
+
+                            <h5 class="text-uppercase" style="color: tomato;">Cinema Vietnam</h5>
+
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#!">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#!">e-CGV</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Gift Card</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Career</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Contact CGV</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-3 mb-md-0 mb-3">
+
+                            <h5 class="text-uppercase" style="color: tomato;">Terms and Conditions</h5>
+
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#!">Conditions of Website Use</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Terms of Use</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Payment Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#!">F.A.Q</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-3 mb-md-0 mb-3">
+
+                            <h5 class="text-uppercase" style="color: tomato;">Follow Us</h5>
+
+                            <ul class="list-unstyled">
+
+                                <link rel="stylesheet"
+                                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                                <!-- Add font awesome icons -->
+
+                                <li>
+                                    <a href="#" class="fa fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="fa fa-twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="fa fa-instagram"></a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="fa fa-google"></a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-3 mb-md-0 mb-3">
+
+                            <h5 class="text-uppercase" style="color: tomato;">Customer Service</h5>
+
+                            <ul class="list-unstyled" style="color: steelblue">
+                                <li>
+                                    <a>Hotline: 1900 6017</a>
+                                </li>
+                                <li>
+                                    <a>Working hours: 8:00 - 22:00 (Monday to Sunday, including Public Holidays)</a>
+                                </li>
+                                <li>
+                                    <a>Email support: hoidap@cgv.vn</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer text-center py-3" style="color: indianred;">COMPANY CINEMA CGV VIETNAM
+
+                </div></footer>
+            <script>
+                $(document).ready(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

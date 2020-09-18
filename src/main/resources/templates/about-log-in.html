@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="container" style="margin-top:30px">
+        <!-- Navbar and main content -->
+        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
+            <a class="navbar-brand" th:href="@{/home/login}">
+                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
+                     style="width:60px;">
+            </a>
+            <!-- Movies Link -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login}">Movies</a>
+                </li>
+            </ul>
+
+            <!-- Theaters Link -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login}">Theaters</a>
+                </li>
+            </ul>
+
+
+            <div class="md-form form-sm my-0">
+                <form class="form-inline my-1">
+                    <label>
+                        <input class="form-control form-control-sm mr-sm-2 mb-0" type="text" placeholder="Search">
+                    </label>
+                    <button class="btn btn-success btn-sm my-0" type="submit">Search</button>
+                </form>
+            </div>
+
+            <!-- User Account -->
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
+                       data-toggle="dropdown">
+                        Your Account
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/profile/login}">Profile</a>
+                        <a class="dropdown-item" href="#">History</a>
+                        <a class="dropdown-item" th:href="@{/home}">Log-out</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- Navbar Ends -->
+        <br>
+
+        <!-- About us page-->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="wow fadeInUp col-md-4 col-sm-5" data-wow-delay="1.3s">                   
+                        <h1>Online Booking</h1>
+                        <img src="../static/images/logo.jpg" class="img-responsive" alt="About" style="width: 350px;">
+                    </div>
+                    
+    
+                    <div class="wow fadeInUp col-md-8 col-sm-8" data-wow-delay="1.6s">
+                        <h1>About Us</h1>
+                        <p>Our project is about an Online Booking website offers a quick and easy search for any kind of movies. The site will
+                            hold a wide array of movies for users to book and watch with ease. Users would either go to the Movies tab then choose
+                            one of the movies suggestion for quick booking. Each movie will have Seats information, Times, Theater location,
+                            Users can add/remove any booked events into their customizable Movie lists in their accounts.
+                            <br>We chose to make this system because it was the only suggestion we all agree on due to our past experience in Web Programming.
+                            We aim to make this system an user-friendly and interactive website that provides detailed information for all users.</p>
+                        <blockquote><h2>Booking as its fastest!</h2></blockquote>                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+        <div class="containerr text-center text-md">
+
+            <div class="row">
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase" style= "color: tomato;">Cinema Vietnam</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="about-log-in.html">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#!">e-CGV</a>
+                        </li>
+                        <li>
+                            <a href="#!">Gift Card</a>
+                        </li>
+                        <li>
+                            <a href="#!">Career</a>
+                        </li>
+                        <li>
+                            <a href="#!">Contact CGV</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase"style= "color: tomato;">Terms and Conditions</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Conditions of Website Use</a>
+                        </li>
+                        <li>
+                            <a href="#!">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a href="#!">Payment Policy</a>
+                        </li>
+                        <li>
+                            <a href="#!">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#!">F.A.Q</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase"style= "color: tomato;">Follow Us</h5>
+
+                    <ul class="list-unstyled">
+   
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+                        <!-- Add font awesome icons -->  
+                        
+                            <li>
+                                <a href="#" class="fa fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="fa fa-instagram"></a>
+                            </li>
+                            <li>
+                                <a href="#!"class="fa fa-google"></a>
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase"style= "color: tomato;">Customer Service</h5>
+
+                    <ul class="list-unstyled" style="color: steelblue">
+                        <li>
+                            <a>Hotline: 1900 6017</a>
+                        </li>
+                        <li>
+                            <a>Working hours: 8:00 - 22:00 (Monday to Sunday, including Public Holidays)</a>
+                        </li>
+                        <li>
+                            <a>Email support: hoidap@cgv.vn</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="footer text-center py-3" style="color: indianred;">COMPANY CINEMA CGV VIETNAM
+
+        </div>
+
+    </footer>
+
+    <!-- tooltip -->
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+</body>
+
+</html>

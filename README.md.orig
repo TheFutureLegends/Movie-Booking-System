@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+Change to trigger CI/CD.
+Change one more
+=======
+# SECONDARY MAIN BRANCH
+This branch diverges from the MASTER branch and act as the main branch for development.
+>>>>>>> develop

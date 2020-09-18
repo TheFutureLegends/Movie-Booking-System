@@ -1,0 +1,25 @@
+language: java
+sudo: required
+services:
+  - docker
+before_install:
+  - mvn clean
+  - mvn install -DskipTests
+  - mvn test
+script:
+  - docker build -t minhpro332/movie-booking .
+  - docker run -d -p 8080:8080 minhpro332/movie-booking
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push minhpro332/movie-booking
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: movie-booking
+  env: MovieBooking-env-1
+  bucket_name: elasticbeanstalk-ap-southeast-1-792974750178
+  on:
+    all_branches: true
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

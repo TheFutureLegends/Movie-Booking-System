@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css">
+    <title>Movie</title>
+</head>
+
+<body>
+
+    <div class="container" style="margin-top:30px" th:object="${user}">
+        <!-- Navbar and main content -->
+        <nav class="navbar navbar-expand-sm justify-content-between" style="background-color: black;">
+            <a class="navbar-brand" th:href="@{/home/login(userId = *{id})}">
+                <img src="https://image.freepik.com/free-vector/cinema-design-background-yellow_44392-19.jpg"alt="logo"
+                     style="width:60px;">
+            </a>
+            <!-- Movies Link -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" th:href="@{/movie/login(userId = *{id})}">Movies</a>
+                </li>
+            </ul>
+
+            <!-- Theaters Link -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" th:href="@{/theater/login(userId = *{id})}">Theaters</a>
+                </li>
+            </ul>
+
+            <!-- User Account -->
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: white;" href="#" id="navbardrop"
+                       data-toggle="dropdown" th:text="*{userName}">
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/profile/login(userId = *{id})}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/history/login(userId = *{id})}">History</a>
+                        <a class="dropdown-item" th:href="@{/home/index}">Log-out</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- Navbar Ends -->
+        <br>
+
+        <!-- Search bar -->
+        <div class="md-form form-sm my-0">
+            <form class="form-inline my-1" th:action="@{/movieLogin}">
+                <label for="movieNameSearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="movieNameSearch" type="text" name="movieNameKeyword" placeholder="Search by movie name">
+                </label>
+                <label for="categorySearch">
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="categorySearch" type="text" name="categoryKeyword" placeholder="Search by category">
+                </label>
+                <label for="ratedSearch"> Maximum age:
+                    <input class="form-control form-control-sm mr-sm-2 mb-0" id="ratedSearch" type="number" value="0" name="ratedKeyword" placeholder="Search by maximum rating">
+                </label>
+                <button class="btn btn-success btn-sm my-0" type="submit" th:name="userId" th:value="*{id}">Search</button>
+            </form>
+        </div>
+
+        <!-- Table container -->
+        <div class="container">
+            <!-- List of Movie -->
+            <table class="table" th:each="tempMovie : ${movies}">
+                <tr>
+                    <td style="width:600px">
+                        <img class="card-img-top" th:src="${tempMovie.coverPicture}" alt="Card image" style="width:300px" />
+                        <br>
+                        <b>Description</b>
+                        <div th:text="${tempMovie.description}"/>
+                    </td>
+                    <td>
+                        <table class="table">
+                            <tr >
+                                <h4 th:text="${tempMovie.movieName}"></h4>
+                            </tr>
+                            <tr>
+                                <div th:switch="${tempMovie.movieAvailableSeat}">
+                                    <div th:case="0">
+                                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalConfirmation" disabled>
+                                            Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
+                                            Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
+                                        </button>
+                                    </div>
+                                    <div th:case="*">
+                                        <a type="button" class="btn btn-outline-primary" th:href="@{/payment/user(movieId = ${tempMovie.id}, userId = *{id})}">
+                                            Movie Start Time:<p th:text="${tempMovie.movieStartTime}"></p><br>
+                                            Available seat:<p th:text="${tempMovie.movieAvailableSeat}"></p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </tr>
+                            <tr>
+                                <table class="table">
+                                    <tr>
+                                        <td><b>Directors</b></td>
+                                        <td th:text="${tempMovie.directors}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Cast</b></td>
+                                        <td th:text="${tempMovie.cast}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Category</b></td>
+                                        <td th:text="${tempMovie.category}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Premiere</b></td>
+                                        <td th:text="${tempMovie.premiere}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Time</b></td>
+                                        <td th:text="${tempMovie.duration}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Language</b></td>
+                                        <td th:text="${tempMovie.language}"/>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Rated</b></td>
+                                        <td th:text="${tempMovie.rated}"/>
+                                    </tr>
+                                </table>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Number of customers confrimation modals start-->
+<!--    <div class="modal fade" id="modalConfirmation">-->
+<!--        <div class="modal-dialog modal-lg">-->
+<!--            <div class="modal-content">-->
+
+<!--                    &lt;!&ndash; Modal Header &ndash;&gt;-->
+<!--                    <div class="modal-header">-->
+<!--                        <h3 class="modal-title">Movie Confirmation</h3>-->
+<!--                        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Modal body &ndash;&gt;-->
+<!--                    <div class="modal-body">-->
+<!--                        <table class="table">-->
+<!--                            <tr>-->
+<!--                                <td><b>Nubmer of Customer</b></td>-->
+<!--                                <td>-->
+<!--                                    <form class="form-inline">-->
+<!--                                        <input class="form-control" type="number" min="1" max="10" value="1">-->
+<!--                                    </form>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Modal footer &ndash;&gt;-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button th:onclick="'window.location.href = \'' + @{/payment} + '\''" data-dismiss="modal" type="button" class="btn btn-primary"><b>Pay Now</b></button>-->
+<!--                        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- Number of customers confrimation modals ends -->
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+        <div class="containerr text-center text-md">
+
+            <div class="row">
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase" style= "color: tomato;">Cinema Vietnam</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="about-log-in.html">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#!">e-CGV</a>
+                        </li>
+                        <li>
+                            <a href="#!">Gift Card</a>
+                        </li>
+                        <li>
+                            <a href="#!">Career</a>
+                        </li>
+                        <li>
+                            <a href="#!">Contact CGV</a>
+                        </li>
+                    </ul>
+                </div>
+        <!-- Footer -->
+        <footer class="page-footer font-small blue pt-4" style="background-color: black;">
+
+            <div class="containerr text-center text-md">
+
+                <div class="row">
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <h5 class="text-uppercase" style="color: tomato;">Cinema Vietnam</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#!">e-CGV</a>
+                            </li>
+                            <li>
+                                <a href="#!">Gift Card</a>
+                            </li>
+                            <li>
+                                <a href="#!">Career</a>
+                            </li>
+                            <li>
+                                <a href="#!">Contact CGV</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <h5 class="text-uppercase" style="color: tomato;">Terms and Conditions</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Conditions of Website Use</a>
+                            </li>
+                            <li>
+                                <a href="#!">Terms of Use</a>
+                            </li>
+                            <li>
+                                <a href="#!">Payment Policy</a>
+                            </li>
+                            <li>
+                                <a href="#!">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#!">F.A.Q</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <h5 class="text-uppercase" style="color: tomato;">Follow Us</h5>
+
+                        <ul class="list-unstyled">
+
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                            <!-- Add font awesome icons -->
+
+                            <li>
+                                <a href="#" class="fa fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="fa fa-instagram"></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="fa fa-google"></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <h5 class="text-uppercase" style="color: tomato;">Customer Service</h5>
+
+                        <ul class="list-unstyled" style="color: steelblue">
+                            <li>
+                                <a>Hotline: 1900 6017</a>
+                            </li>
+                            <li>
+                                <a>Working hours: 8:00 - 22:00 (Monday to Sunday, including Public Holidays)</a>
+                            </li>
+                            <li>
+                                <a>Email support: hoidap@cgv.vn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer text-center py-3" style="color: indianred;">COMPANY CINEMA CGV VIETNAM
+
+            </div></footer>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
