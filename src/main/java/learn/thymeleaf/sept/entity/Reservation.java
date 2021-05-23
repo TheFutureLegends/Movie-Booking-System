@@ -37,7 +37,7 @@ public class Reservation {
     @JoinColumn(name = "u_profile_id")
     private UserProfile userProfile;
     //Constructors
-    public Reservation() { }
+    public Reservation() {}
 
     public Reservation(String name, Date dateTime, String status) {
         this.name = name;

@@ -18,9 +18,9 @@ public class User{
     @Column(name="role")
     private String role;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "u_profile_id")
-//    private UserProfile userProfile;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_profile_id")
+    private UserProfile userProfile;
 
 
     //Constructors

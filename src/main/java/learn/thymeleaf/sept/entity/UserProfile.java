@@ -1,11 +1,16 @@
 package learn.thymeleaf.sept.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "user_profile")
+@Getter
+@Setter
+@ToString
 public class UserProfile {
     //Properties
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +23,9 @@ public class UserProfile {
     @OneToMany(mappedBy = "userProfile", fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "wish_list_id")
+    private WishedOrder wishedOrder;
 
     //Constructor
     public UserProfile() { }
@@ -29,54 +37,6 @@ public class UserProfile {
         this.address = address;
     }
 
-    //Getters
-    public int getId() {
-        return id;
-    }
-    public String getFullName() {
-        return fullName;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getAddress() {
-        return address;
-    }
-    public List<Reservation> getReservations() { return reservations; }
-
-    //Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setAddress(String address) { this.address = address; }
-    public void setReservations(List<Reservation> reservations) { this.reservations = reservations; }
-//toString
-
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", reservations=" + reservations +
-                '}';
-    }
-
-
     //add reservations
 
     public void addReservation(Reservation reservation){
@@ -86,4 +46,7 @@ public class UserProfile {
         reservations.add(reservation);
         reservation.setUserProfile(this);
     }
+
+    //add wish list
+
 }
