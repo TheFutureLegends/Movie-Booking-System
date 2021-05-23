@@ -17,7 +17,7 @@ deploy:
   provider: elasticbeanstalk
   region: ap-southeast-1
   app: movie-booking
-  env: Moviebookingenv1-env
+  env: Moviebooking-env
   bucket_name: elasticbeanstalk-ap-southeast-1-792974750178
   on:
     all_branches: true
